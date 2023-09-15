@@ -1,6 +1,7 @@
 #include <iostream>
 #include"headers/PathManager.h"
 #include "headers/Task.h"
+#include "headers/Visuals.h"
 using namespace std;
 int main() {
 
@@ -39,6 +40,6 @@ int main() {
 //    cout<< mytask.getdatemonth()<<endl;
 //    cout<< mytask.getdateyear()<<endl;
 //    cout<< mytask.isUrgent()<<endl;
-
+    core::Visuals::title();
     return 0;
 }
