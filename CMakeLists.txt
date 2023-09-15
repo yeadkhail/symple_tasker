@@ -3,4 +3,4 @@ project(symple_tasker)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(symple_tasker main.cpp)
+add_executable(symple_tasker main.cpp functions/sources/core/Task/Task.cpp headers/Task.h)
