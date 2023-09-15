@@ -22,10 +22,17 @@ namespace core
         std::string date;
         std::string attachment;
     public:
-        int showdatedate(const std::string& date);
-        int showdatemonth(const std::string& date);
-        int showdateyear(const std::string& date);
-        bool isUrgent(const Task &taskdata);
+        Task();
+        Task(std::string line);
+        std::string gettaskname();
+        std::string gettaskdetail();
+        std::string gettasktag();
+        std::string getattachment();
+        int getdatedate();
+        int getdatemonth();
+        int getdateyear();
+        bool isUrgent();
+
     };
 } // core
 
