@@ -3,7 +3,7 @@
 //
 
 #include "../../../../headers/Task.h"
-
+using namespace std;
 namespace core
 {
     std::string Task::gettaskname()
@@ -166,6 +166,18 @@ namespace core
     }
     Task::Task(std::string line)
     {
-        //code
+        std::istringstream iss(line); //1^presentation^make the presentation slides^project^23/05/2023^NULL	example
+        std::string part;
+        getline(iss, part, '^');
+        getline(iss, part, '^');
+        taskname = part;
+        getline(iss, part, '^');
+        taskdetail = part;
+        getline(iss, part, '^');
+        tasktag = part;
+        getline(iss, part, '^');
+        date = part;
+        getline(iss, part, '^');
+        attachment = part;
     }
 } // core
