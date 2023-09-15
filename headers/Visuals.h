@@ -11,6 +11,8 @@ namespace core {
     private:
     public:
         static void title();
+        static void motivation();
+        static void showintro();
     };
 
 } // core

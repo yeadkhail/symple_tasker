@@ -40,6 +40,8 @@ int main() {
 //    cout<< mytask.getdatemonth()<<endl;
 //    cout<< mytask.getdateyear()<<endl;
 //    cout<< mytask.isUrgent()<<endl;
-    core::Visuals::title();
+//    core::Visuals::title();
+//    core::Visuals::motivation();
+      core::Visuals::showintro();
     return 0;
 }
