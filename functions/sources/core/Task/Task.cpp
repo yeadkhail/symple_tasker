@@ -170,14 +170,14 @@ namespace core
         std::string part;
         getline(iss, part, '^');
         getline(iss, part, '^');
-        taskname = part;
+        taskname = crypto::base64::decode(part);
         getline(iss, part, '^');
-        taskdetail = part;
+        taskdetail = crypto::base64::decode(part);
         getline(iss, part, '^');
-        tasktag = part;
+        tasktag = crypto::base64::decode(part);
         getline(iss, part, '^');
-        date = part;
+        date = crypto::base64::decode(part);
         getline(iss, part, '^');
-        attachment = part;
+        attachment = crypto::base64::decode(part);
     }
 } // core
