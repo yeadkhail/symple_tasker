@@ -13,6 +13,7 @@ namespace core {
         static void title();
         static void motivation();
         static void showintro();
+        static void showhelp();
     };
 
 } // core

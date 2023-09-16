@@ -5,22 +5,7 @@
 #include "../../../../headers/base64.h"
 #include<string>
 #include<vector>
-#include<sstream>
-#include<chrono>
-#include<ctime>
-#include<fstream>
-#include<cstring>
-#include<cstdlib>
-#include<cstdio>
-#include<unistd.h>
-#include<sys/types.h>
-#include<sys/stat.h>
-#include<dirent.h>
-#include<errno.h>
-#include<fcntl.h>
-#include<sys/wait.h>
-#include<sys/mman.h>
-#include<sys/time.h>
+
 using namespace std;
 namespace crypto {
 

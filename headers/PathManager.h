@@ -11,11 +11,13 @@ namespace core {
     private:
         std::string home;
         std::string symfolder;
+        std::string taskfile;
     public:
         PathManager();
         //PathManager();
         std::string gethome();
         std::string getsymfolder();
+        std::string gettaskfile();
 
     };
 

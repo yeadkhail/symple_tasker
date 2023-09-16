@@ -44,7 +44,8 @@ int main() {
 //    core::Visuals::title();
 //    core::Visuals::motivation();
       core::Visuals::showintro();
-      std::string s = crypto::base64::encode("1^presentation^make the presentation slides^project^23/05/2023^NULL");
+      core::Visuals::showhelp();
+      std::string s = crypto::base64::encode("1^presentation^make the \npresentation slides^project^23/05/2023^NULL");
       cout << s << endl;
       cout << crypto::base64::encode(mytask.gettaskname()) << endl;
       cout << crypto::base64::decode(s) << endl;
