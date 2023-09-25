@@ -7,9 +7,9 @@
 #include"Task.h"
 namespace core {
 
-    class tasktraverser {
+    class tasktraverser : public Task  // inherit from Task
+    {
     protected:
-        Task task;
 
     public:
 
