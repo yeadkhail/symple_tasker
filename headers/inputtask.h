@@ -7,9 +7,10 @@
 #include"Task.h"
 namespace core {
 
-    class inputtask{
+    class inputtask : public Task  // inherit from Task
+    {
     protected:
-        Task task;
+
     public:
         
     };
