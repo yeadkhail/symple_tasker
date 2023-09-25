@@ -12,7 +12,7 @@ namespace core {
         std::string home;
         std::string symfolder;
         std::string taskfile;
-    public:
+    protected:
         PathManager();
         //PathManager();
         std::string gethome();
