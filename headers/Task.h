@@ -16,7 +16,7 @@ namespace core
 
     class Task
     {
-    private:
+    protected:
         std::string taskname;
         std::string taskdetail;
         std::string tasktag;

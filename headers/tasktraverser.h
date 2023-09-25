@@ -8,7 +8,7 @@
 namespace core {
 
     class tasktraverser {
-    private:
+    protected:
         Task task;
 
     public:

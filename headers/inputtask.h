@@ -8,7 +8,7 @@
 namespace core {
 
     class inputtask{
-    private:
+    protected:
         Task task;
     public:
         
