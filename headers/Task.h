@@ -10,7 +10,7 @@
 #include <sstream>
 #include <chrono>
 #include "base64.h"
-using namespace std;
+
 namespace core
 {
 
