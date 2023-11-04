@@ -10,7 +10,7 @@
 #include <sstream>
 #include <chrono>
 #include "base64.h"
-using namespace std;
+
 namespace core
 {
 
@@ -25,10 +25,12 @@ namespace core
     public:
         Task();
         Task(std::string line);
+        Task(string _taskname,string _taskdetail,string _tasktag, string _date,string _attachment);
         std::string gettaskname();
         std::string gettaskdetail();
         std::string gettasktag();
         std::string getattachment();
+        string packtask();
         int getdatedate();
         int getdatemonth();
         int getdateyear();

@@ -180,4 +180,22 @@ namespace core
         getline(iss, part, '^');
         attachment = crypto::base64::decode(part);
     }
+    Task::Task(string _taskname,string _taskdetail,string _tasktag, string _date,string _attachment)
+    {
+        taskname = _taskname;
+        taskdetail = _taskdetail;
+        tasktag = _tasktag;
+        date = _date;
+        attachment = _attachment;
+    }
+    string Task::packtask()
+    {
+        string packedtask = "";
+        packedtask += crypto::base64::encode(taskname) + "^";
+        packedtask += crypto::base64::encode(taskdetail) + "^";
+        packedtask += crypto::base64::encode(tasktag) + "^";
+        packedtask += crypto::base64::encode(date) + "^";
+        packedtask += crypto::base64::encode(attachment);
+        return packedtask;
+    }
 } // core
