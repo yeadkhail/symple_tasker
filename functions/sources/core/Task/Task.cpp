@@ -186,7 +186,7 @@ namespace core
         taskdetail = _taskdetail;
         tasktag = _tasktag;
         date = _date;
-        attachment = _attachment
+        attachment = _attachment;
     }
     string Task::packtask()
     {
