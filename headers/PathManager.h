@@ -5,20 +5,22 @@
 #ifndef SYMPLE_TASKER_PATHMANAGER_H
 #define SYMPLE_TASKER_PATHMANAGER_H
 #include<string>
+using namespace std;
 namespace core {
 
     class PathManager {
     private:
-        std::string home;
-        std::string symfolder;
-        std::string taskfile;
+        string home;
+        string symfolder;
+        string taskfile;
+        string tagfile;
     public:
         PathManager();
         //PathManager();
-        std::string gethome();
-        std::string getsymfolder();
-        std::string gettaskfile();
-
+        string gethome();
+        string getsymfolder();
+        string gettaskfile();
+        string gettagfile();
     };
 
 } // core

@@ -7,21 +7,26 @@
 namespace core {
     PathManager::PathManager()
     {
-        home = std::getenv("HOME");
+        home = getenv("HOME");
         std::string Sym = "/.sym";
         symfolder = home + Sym;
         taskfile = symfolder + "/tasks";
+        tagfile = symfolder + "/tags";
     }
-    std::string PathManager::gethome()
+    string PathManager::gethome()
     {
         return home;
     }
-    std::string PathManager::getsymfolder()
+    string PathManager::getsymfolder()
     {
         return symfolder;
     }
-    std::string PathManager::gettaskfile()
+    string PathManager::gettaskfile()
     {
         return taskfile;
+    }
+    string PathManager::gettagfile()
+    {
+        return tagfile;
     }
 } // core
