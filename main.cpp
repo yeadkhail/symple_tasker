@@ -4,6 +4,7 @@
 #include "headers/Visuals.h"
 #include "headers/base64.h"
 #include "headers/inputtask.h"
+#include "headers/taghandler.h"
 using namespace std;
 int main() {
 
@@ -50,16 +51,22 @@ int main() {
 //      cout << s << endl;
 //      cout << crypto::base64::encode(mytask.gettaskname()) << endl;
 //      cout << crypto::base64::decode(s) << endl;
-    core::Task mytask("presentation","make the presentation slides","project","23/05/2023","NULL");
-    cout <<"Task: "<< mytask.gettaskname() << endl;
-    cout << mytask.packtask() << endl;
-    std::string testData = "Hello";
-    std::string encodedData = crypto::base64::encode(testData);
-    std::string decodedData = crypto::base64::decode(encodedData);
-    cout << "Original: " << testData << endl;
-    cout << "Encoded: " << encodedData << endl;
-    cout << "Decoded: " << decodedData << endl;
-    core::inputtask myinputtask;
-    myinputtask.insert();
+//    core::Task mytask("presentation","make the presentation slides","project","23/05/2023","NULL");
+//    cout <<"Task: "<< mytask.gettaskname() << endl;
+//    cout << mytask.packtask() << endl;
+//    std::string testData = "Hello";
+//    std::string encodedData = crypto::base64::encode(testData);
+//    std::string decodedData = crypto::base64::decode(encodedData);
+//    cout << "Original: " << testData << endl;
+//    cout << "Encoded: " << encodedData << endl;
+//    cout << "Decoded: " << decodedData << endl;
+//    core::inputtask myinputtask;
+//    myinputtask.insert();
+//    core::Visuals::asciiArtedName();
+      core::taghandler mytaghandler("1^project");
+      cout << mytaghandler.gettagname() << endl;
+        cout << mytaghandler.getimportance() << endl;
+    core::taghandler mytaghandler2("1^project");
+    mytaghandler2.inserttag();
     return 0;
 }
