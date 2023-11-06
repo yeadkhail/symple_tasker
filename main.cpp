@@ -3,6 +3,7 @@
 #include "headers/Task.h"
 #include "headers/Visuals.h"
 #include "headers/base64.h"
+#include "headers/inputtask.h"
 using namespace std;
 int main() {
 
@@ -58,6 +59,7 @@ int main() {
     cout << "Original: " << testData << endl;
     cout << "Encoded: " << encodedData << endl;
     cout << "Decoded: " << decodedData << endl;
-
+    core::inputtask myinputtask;
+    myinputtask.insert();
     return 0;
 }

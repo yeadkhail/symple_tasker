@@ -23,7 +23,7 @@ namespace core
         std::string date;
         std::string attachment;
     public:
-        Task();
+        Task(){}
         Task(std::string line);
         Task(string _taskname,string _taskdetail,string _tasktag, string _date,string _attachment);
         std::string gettaskname();

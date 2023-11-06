@@ -10,7 +10,7 @@ namespace core {
         home = std::getenv("HOME");
         std::string Sym = "/.sym";
         symfolder = home + Sym;
-        taskfile = symfolder + "/taskfile";
+        taskfile = symfolder + "/tasks";
     }
     std::string PathManager::gethome()
     {
