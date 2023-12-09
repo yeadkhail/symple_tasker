@@ -556,4 +556,12 @@ namespace core {
         fin.close();
         return;
     }
+    void table::showTable()
+    {
+        FilesForTable();
+        fileChangerForOutputTable();
+        finalFileChangerForOutputTable();
+        outputTable();
+        return;
+    }
 } // core

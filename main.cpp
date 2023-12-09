@@ -5,6 +5,7 @@
 #include "headers/base64.h"
 #include "headers/inputtask.h"
 #include "headers/taghandler.h"
+#include "headers/table.h"
 using namespace std;
 int main() {
 
@@ -63,10 +64,12 @@ int main() {
 //    core::inputtask myinputtask;
 //    myinputtask.insert();
 //    core::Visuals::asciiArtedName();
-      core::taghandler mytaghandler("1^project");
-      cout << mytaghandler.gettagname() << endl;
-        cout << mytaghandler.getimportance() << endl;
-    core::taghandler mytaghandler2("1^project");
-    mytaghandler2.inserttag();
+//      core::taghandler mytaghandler("1^project");
+//      cout << mytaghandler.gettagname() << endl;
+//        cout << mytaghandler.getimportance() << endl;
+//    core::taghandler mytaghandler2("1^project");
+//    mytaghandler2.inserttag();
+    core::table mytable;
+    mytable.showTable();
     return 0;
 }
