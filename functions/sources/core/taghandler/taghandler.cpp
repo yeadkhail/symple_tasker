@@ -35,4 +35,35 @@ namespace core {
         tagfile<<importance<<"^"<<tagname<<endl;
         tagfile.close();
     }
+    bool taghandler::isTagExist(string tagname)
+    {
+        ifstream tagfile;
+        tagfile.open(gettagfile());
+        string line;
+        while(getline(tagfile,line))
+        {
+            if(line.substr(line.find_first_of('^')+1) == tagname)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    bool taghandler::isimportant(string tagname)
+    {
+        ifstream tagfile;
+        tagfile.open(gettagfile());
+        string line;
+        while(getline(tagfile,line))
+        {
+            if(line.substr(line.find_first_of('^')+1) == tagname)
+            {
+                if(line.substr(0,line.find_first_of('^')) == "1")
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 } // core
