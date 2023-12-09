@@ -6,6 +6,7 @@
 #include "headers/inputtask.h"
 #include "headers/taghandler.h"
 #include "headers/table.h"
+#include "headers/aes128.h"
 using namespace std;
 int main() {
 
@@ -44,10 +45,6 @@ int main() {
 //    cout<< mytask.getdatemonth()<<endl;
 //    cout<< mytask.getdateyear()<<endl;
 //    cout<< mytask.isUrgent()<<endl;
-//    core::Visuals::title();
-//    core::Visuals::motivation();
-//      core::Visuals::showintro();
-//      core::Visuals::showhelp();
 //      std::string s = crypto::base64::encode("1^presentation^make the \npresentation slides^project^23/05/2023^NULL");
 //      cout << s << endl;
 //      cout << crypto::base64::encode(mytask.gettaskname()) << endl;
@@ -61,15 +58,19 @@ int main() {
 //    cout << "Original: " << testData << endl;
 //    cout << "Encoded: " << encodedData << endl;
 //    cout << "Decoded: " << decodedData << endl;
-//    core::inputtask myinputtask;
-//    myinputtask.insert();
+    //core::inputtask myinputtask;
+    //myinputtask.insert();
 //    core::Visuals::asciiArtedName();
 //      core::taghandler mytaghandler("1^project");
 //      cout << mytaghandler.gettagname() << endl;
 //        cout << mytaghandler.getimportance() << endl;
 //    core::taghandler mytaghandler2("1^project");
 //    mytaghandler2.inserttag();
-    core::table mytable;
-    mytable.showTable();
+//    core::table mytable;
+//    mytable.showTable();
+    core::PathManager p;
+    crypto::aes128 myaes;
+    //myaes.encryptfile(p.gettaskfile(),p.getencryptedtaskfile(),"1234567890123456");
+    myaes.decryptfile(p.getencryptedtaskfile(),p.gettaskfile(),"1234567890123456");
     return 0;
 }

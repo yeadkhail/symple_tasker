@@ -12,6 +12,7 @@ namespace core {
         symfolder = home + Sym;
         taskfile = symfolder + "/tasks";
         tagfile = symfolder + "/tags";
+        encryptedtaskfile = taskfile + ".enc";
     }
     string PathManager::gethome()
     {
@@ -29,4 +30,9 @@ namespace core {
     {
         return tagfile;
     }
+    string PathManager::getencryptedtaskfile()
+    {
+        return encryptedtaskfile;
+    }
+
 } // core

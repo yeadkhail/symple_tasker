@@ -14,12 +14,14 @@ namespace core {
         string symfolder;
         string taskfile;
         string tagfile;
+        string encryptedtaskfile;
     public:
         PathManager();
         //PathManager();
         string gethome();
         string getsymfolder();
         string gettaskfile();
+        string getencryptedtaskfile();
         string gettagfile();
     };
 
