@@ -4,23 +4,36 @@
 
 #include "../../../../headers/Task.h"
 using namespace std;
+
+const int MAX_VALID_YR = 9999;
+const int MIN_VALID_YR = 1800;
 namespace core
 {
-    std::string Task::gettaskname()
-    {
+    std::string Task::gettaskname() const{
         return taskname;
     }
-    std::string Task::gettaskdetail()
-    {
+    void Task::settaskname(const string name){
+        taskname=name;
+    }
+    std::string Task::gettaskdetail() const{
         return taskdetail;
+    }
+    void Task::settaskdetail(string detail){
+        taskdetail=detail;
     }
     std::string Task::gettasktag()
     {
         return tasktag;
     }
+    void Task::settasktag(string tag){
+        tasktag=tag;
+    }
     std::string Task::getattachment()
     {
         return attachment;
+    }
+    void Task::setattachment(string att){
+        attachment=att;
     }
     int Task::getdatedate()
     {
@@ -48,6 +61,45 @@ namespace core
         getline(issdate, part, '/');
         int intyear = stoi(part);
         return intyear;
+    }
+    bool Task::dateinputchecker(const std::string dateStr){
+        int day = getdatedate();
+        int month = getdatemonth();
+        int year = getdateyear();
+        std::string dayString = std::to_string(day);
+        std::string monthString = std::to_string(day);
+        if (dayString.length() == 1 || monthString.length()== 1) {
+            return false;
+        }
+        else if ((dayString.length() == 2 && dayString[0]== '0') || (monthString.length()== 2 && monthString[0]== '0')
+                || (dayString.length() == 2 || monthString.length()==2))
+                  {
+            if (year > MAX_VALID_YR ||
+                year < MIN_VALID_YR)
+                return false;
+            if (month < 1 || month > 12)
+                return false;
+            if (day < 1 || day > 31)
+                return false;
+
+            // Handle February month with leap year
+            if (month == 2) {
+                if (((year % 4 == 0) &&
+                     (year % 100 != 0)) ||
+                    (year % 400 == 0))
+                    return (day <= 29);
+                else
+                    return (day <= 28);
+            }
+            //months with 30 days(April, June, September,November)
+            if (month == 4 || month == 6 ||
+                month == 9 || month == 11)
+                return (day <= 30);
+
+            return true;
+        }
+        return false;
+
     }
     bool Task::isUrgent()
     {
