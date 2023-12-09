@@ -7,8 +7,12 @@
 
 namespace core {
 
-    class table {
-
+   class table {
+        public:
+        void FilesForTable();
+        void fileChangerForOutputTable();
+        void finalFileChangerForOutputTable();
+        void outputTable();
     };
 
 } // core
