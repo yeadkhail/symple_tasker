@@ -36,11 +36,13 @@ namespace core
         int getdatemonth();
         int getdateyear();
         bool isUrgent();
+
         void settaskname(string name);
         void settaskdetail(string detail);
         void settasktag(string tag);
         void setattachment(string att);
         bool dateinputchecker(const string dateStr);
+        bool isExpired();
         ~Task() {}
     };
 } // core
