@@ -15,7 +15,7 @@ namespace core {
         tagname = "";
         importance = 0;
     }
-    taghandler::taghandler(string line)
+    taghandler::taghandler(const string& line)
     {
         importance = stoi(line.substr(0,line.find_first_of('^')));
         tagname = line.substr(line.find_first_of('^')+1);
@@ -24,7 +24,7 @@ namespace core {
     {
         return tagname;
     }
-    int taghandler::getimportance()
+    int taghandler::getimportance() const
     {
         return importance;
     }

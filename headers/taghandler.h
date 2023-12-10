@@ -18,9 +18,9 @@ namespace core {
     public:
         taghandler(string _tagname,int _importance);
         taghandler();
-        taghandler(string line);
+        taghandler(const string& line);
         string gettagname();
-        int getimportance();
+        int getimportance()const;
         void inserttag();
         bool isTagExist(string tagname);
         static bool isimportant(string tagname);
