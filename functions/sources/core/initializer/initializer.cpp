@@ -45,7 +45,24 @@ namespace core {
         {
             return password;
         }
+        string initializer::enterpassword()
+        {
+            std::cout << "Enter password: ";
 
+            // Turn off terminal echoing
+            termios oldt;
+            tcgetattr(STDIN_FILENO, &oldt);
+            termios newt = oldt;
+            newt.c_lflag &= ~ECHO;
+            tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+
+            // Read the password
+            std::cin >> password;
+
+            // Restore terminal settings
+            tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+            std::cout << std::endl; // Move to the next line after password entry
+        }
      bool initializer::dotsymfolderchecker()
      {
          ifstream checker;

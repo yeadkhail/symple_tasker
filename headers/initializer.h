@@ -32,6 +32,7 @@ namespace core {
         string getemail();
         string getaddress();
         string getpassword();
+        string enterpassword();
         bool dotsymfolderchecker();
         void createdirstructure();
         void createdotsymfolder();
