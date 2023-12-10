@@ -449,7 +449,7 @@ namespace crypto {
                         }
                     }
                     outputFile.close();
-                    std::cout << "Last line removed successfully!" << std::endl;
+                    //std::cout << "Last line removed successfully!" << std::endl;
                 } else {
                     std::cout << "Unable to open output file." << std::endl;
                 }

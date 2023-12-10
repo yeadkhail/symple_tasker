@@ -15,6 +15,8 @@ namespace core {
         string taskfile;
         string tagfile;
         string encryptedtaskfile;
+        string profilefile;
+        string notesfolder;
     public:
         PathManager();
         //PathManager();
@@ -23,6 +25,8 @@ namespace core {
         string gettaskfile();
         string getencryptedtaskfile();
         string gettagfile();
+        string getprofilefile();
+        string getnotesfolder();
     };
 
 } // core
