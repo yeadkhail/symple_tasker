@@ -306,4 +306,8 @@ namespace core
             return false;
         }
     }
+    bool Task::isimportant()
+    {
+       return taghandler::isimportant(tasktag)
+    }
 } // core

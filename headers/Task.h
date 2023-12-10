@@ -11,6 +11,8 @@
 #include <chrono>
 #include <sstream>
 #include "base64.h"
+#include "PathManager.h"
+#include "taghandler.h"
 using namespace std;
 namespace core
 {
@@ -43,6 +45,7 @@ namespace core
         void setattachment(string att);
         bool dateinputchecker(const string dateStr);
         bool isExpired();
+        bool isimportant();
         ~Task() {}
     };
 } // core

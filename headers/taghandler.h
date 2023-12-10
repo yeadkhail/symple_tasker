@@ -23,7 +23,8 @@ namespace core {
         int getimportance();
         void inserttag();
         bool isTagExist(string tagname);
-        bool isimportant(string tagname);
+        static bool isimportant(string tagname);
+        bool isimportant();
     };
 
 } // core

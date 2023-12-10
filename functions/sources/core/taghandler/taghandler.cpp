@@ -52,7 +52,11 @@ namespace core {
     bool taghandler::isimportant(string tagname)
     {
         ifstream tagfile;
-        tagfile.open(gettagfile());
+        string home = getenv("HOME");
+        std::string Sym = "/.sym";
+        string symfolder = home + Sym;
+        string tagfilename = symfolder + "/tags";
+        tagfile.open(tagfilename);
         string line;
         while(getline(tagfile,line))
         {
@@ -65,5 +69,16 @@ namespace core {
             }
         }
         return false;
+    }
+    bool taghandler::isimportant()
+    {
+        if(importance == 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 } // core
