@@ -9,6 +9,7 @@
 #include <fstream>
 #include <sstream>
 #include <chrono>
+#include <sstream>
 #include "base64.h"
 using namespace std;
 namespace core
@@ -26,8 +27,8 @@ namespace core
         Task(){}
         Task(std::string line);
         Task(string _taskname,string _taskdetail,string _tasktag, string _date,string _attachment);
-        std::string gettaskname();
-        std::string gettaskdetail();
+        std::string gettaskname() const;
+        std::string gettaskdetail()const;
         std::string gettasktag();
         std::string getattachment();
         string packtask();
@@ -35,8 +36,14 @@ namespace core
         int getdatemonth();
         int getdateyear();
         bool isUrgent();
-        bool isExpired();
 
+        void settaskname(string name);
+        void settaskdetail(string detail);
+        void settasktag(string tag);
+        void setattachment(string att);
+        bool dateinputchecker(const string dateStr);
+        bool isExpired();
+        ~Task() {}
     };
 } // core
 
