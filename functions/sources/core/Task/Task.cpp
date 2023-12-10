@@ -198,4 +198,60 @@ namespace core
         packedtask += crypto::base64::encode(attachment);
         return packedtask;
     }
+    bool Task::isExpired()
+    {
+        std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
+
+        // Convert the system time to a time_t object
+        std::time_t currentTime = std::chrono::system_clock::to_time_t(now);
+
+        // Convert the time_t object to a struct tm
+        std::tm *timeInfo = std::localtime(&currentTime);
+
+        // Extract the date, month, and year
+        int day = timeInfo->tm_mday;
+        int month = timeInfo->tm_mon + 1;    // tm_mon is zero-based
+        int year = timeInfo->tm_year + 1900; // tm_year is years since 1900
+        if (Task::getdateyear() < year)
+        {
+            return true;
+        }
+        else if (Task::getdateyear() == year)
+        {
+            if (Task::getdatemonth() < month)
+            {
+                return true;
+            }
+            else if (Task::getdatemonth() == month)
+            {
+                if (Task::getdatedate() < day)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else if (Task::getdateyear() == year + 1 && month == 12 && day == 31)
+        {
+            if (Task::getdatemonth() == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
 } // core

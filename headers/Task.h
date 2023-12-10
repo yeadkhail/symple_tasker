@@ -35,6 +35,7 @@ namespace core
         int getdatemonth();
         int getdateyear();
         bool isUrgent();
+        bool isExpired();
 
     };
 } // core
