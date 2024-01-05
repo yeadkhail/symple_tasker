@@ -5,9 +5,11 @@
 #include "headers/base64.h"
 #include "headers/inputtask.h"
 #include "headers/taghandler.h"
+#include "headers/tasktraverser.h"
 #include "headers/table.h"
 #include "headers/aes128.h"
 #include "headers/initializer.h"
+#include "headers/outputtask.h"
 using namespace std;
 
 
@@ -18,56 +20,56 @@ int main(int argc, char *argv[])
 
     core::initializer maininitializer;
 
-    if(argc == 1) {
-        begin:
-        core::Visuals::title();
-        if(!maininitializer.dotsymfolderchecker())
-        {
-            maininitializer.initialize();
-            goto begin;
-        }
-        else
-        {
-            //core::table::showTable();
-            start:
-            string input;
-            cout << "Enter your command >> ";
-            cin >> input;
-//            if(input == "insert") core::inputtask::insert();
-//            else if(input == "edit-task") core::inputtask::TaskEdit();
-//            else if(input == "delete-task") core::inputtask::TaskDelete();
-            //else if(input == "update") updateTask();
-            //else if(input == "show") showTask();
-            if(input == "help") core::Visuals::showhelp();
-//            else if(input == "version") core::Visuals::version();
-//            else if(input == "randomizer") core::Visuals::randomizer();
-//            else if(input == "edit-tag") core::taghandler::TagEdit();
-//            else if(input =="delete-tag") core::taghandler::TagDelete();
-//            else if(input == "insert-tag") core::taghandler::TagInsert();
-//            else if(input == "search-tagwise") core::taghandler::TagWise();
-//            else if(input == "show-attachment") core::Visuals::findAttachment();
-//            else if(input == "show-expired") core::Visuals::showExpired();
-//            else if(input == "history") core::Visuals::history();
-//            else if(input == "show-table") core::Visuals::showTable();
-            else if(input == "clear") system("clear");  //system("cls");
-            else if(input == "exit")
-            {
-                system("sleep 1");
-                cout << "Encrypting your data" << endl;
-                system("sleep 1");
-                maininitializer.encrypttaskfile();
-                cout << "Exiting the program" << endl;
-                system("clear");
-                exit(0);
-            }
-            else cout << "Invalid command" << endl;
-            if(input != "exit" )
-            {
-                goto start;
-            }
-        }
-
-    }
+//    if(argc == 1) {
+//        begin:
+//        core::Visuals::title();
+//        if(!maininitializer.dotsymfolderchecker())
+//        {
+//            maininitializer.initialize();
+//            goto begin;
+//        }
+//        else
+//        {
+//            //core::table::showTable();
+//            start:
+//            string input;
+//            cout << "Enter your command >> ";
+//            cin >> input;
+////            if(input == "insert") core::inputtask::insert();
+////            else if(input == "edit-task") core::inputtask::TaskEdit();
+////            else if(input == "delete-task") core::inputtask::TaskDelete();
+//            //else if(input == "update") updateTask();
+//            //else if(input == "show") showTask();
+//            if(input == "help") core::Visuals::showhelp();
+////            else if(input == "version") core::Visuals::version();
+////            else if(input == "randomizer") core::Visuals::randomizer();
+////            else if(input == "edit-tag") core::taghandler::TagEdit();
+////            else if(input =="delete-tag") core::taghandler::TagDelete();
+////            else if(input == "insert-tag") core::taghandler::TagInsert();
+////            else if(input == "search-tagwise") core::taghandler::TagWise();
+////            else if(input == "show-attachment") core::Visuals::findAttachment();
+////            else if(input == "show-expired") core::Visuals::showExpired();
+////            else if(input == "history") core::Visuals::history();
+////            else if(input == "show-table") core::Visuals::showTable();
+//            else if(input == "clear") system("clear");  //system("cls");
+//            else if(input == "exit")
+//            {
+//                system("sleep 1");
+//                cout << "Encrypting your data" << endl;
+//                system("sleep 1");
+//                maininitializer.encrypttaskfile();
+//                cout << "Exiting the program" << endl;
+//                system("clear");
+//                exit(0);
+//            }
+//            else cout << "Invalid command" << endl;
+//            if(input != "exit" )
+//            {
+//                goto start;
+//            }
+//        }
+//
+//    }
 
 
 
@@ -119,16 +121,22 @@ int main(int argc, char *argv[])
 //    cout << "Original: " << testData << endl;
 //    cout << "Encoded: " << encodedData << endl;
 //    cout << "Decoded: " << decodedData << endl;
-    //core::inputtask myinputtask;
-    //myinputtask.insert();
+//    core::inputtask myinputtask;
+//    myinputtask.insert();
 //    core::Visuals::asciiArtedName();
 //      core::taghandler mytaghandler("1^project");
 //      cout << mytaghandler.gettagname() << endl;
 //        cout << mytaghandler.getimportance() << endl;
-//    core::taghandler mytaghandler2("1^project");
+//    core::taghandler mytaghandler2("1^yyy");
 //    mytaghandler2.inserttag();
 //    core::table mytable;
 //    mytable.showTable();
+//core::tasktraverser t;
+//t.findUrgent();
+//t.findImportant();
+//t. findNotImportant();
+    core::outputtask o;
+    o.shownotUrgent();
 //    core::PathManager p;
 //    crypto::aes128 myaes;
 //    //myaes.encryptfile(p.gettaskfile(),p.getencryptedtaskfile(),"1234567890123456");

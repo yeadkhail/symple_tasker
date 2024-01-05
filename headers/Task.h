@@ -32,6 +32,7 @@ namespace core
         std::string gettaskname() const;
         std::string gettaskdetail()const;
         std::string gettasktag();
+        std::string gettaskdate();
         std::string getattachment();
         string packtask();
         int getdatedate();
@@ -42,11 +43,12 @@ namespace core
         void settaskname(string name);
         void settaskdetail(string detail);
         void settasktag(string tag);
+        void settaskdate(string dt);
         void setattachment(string att);
         bool dateinputchecker(const string dateStr);
         bool isExpired();
         bool isimportant();
-        ~Task() {}
+        ~Task();
     };
 } // core
 
