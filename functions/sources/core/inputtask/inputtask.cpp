@@ -4,6 +4,7 @@
 
 #include "../../../../headers/inputtask.h"
 #include "../../../../headers/PathManager.h"
+#include "../../../../headers/attachment.h"
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -62,9 +63,11 @@ namespace core {
 //            //cout << "hello" << endl;
 //            taskdata.attachment = destinationFilePath;
 //            //cout<< taskdata.attachment;
-                attachment = "";
+                core::attachment myattachment;
+                myattachment.moveattachmenttoattachmentfolder();
+                attachment = myattachment.getattachmentname();
         }
         else
-            attachment = "";
+            attachment = "NULL";
     }
 } // core

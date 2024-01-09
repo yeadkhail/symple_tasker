@@ -14,6 +14,8 @@ namespace core {
         tagfile = symfolder + "/tags";
         encryptedtaskfile = taskfile + ".enc";
         profilefile = symfolder + "/profile";
+        notesfolder = symfolder + "/notes";
+        attachmentfolder = symfolder + "/attachments";
     }
     string PathManager::gethome()
     {
@@ -42,6 +44,10 @@ namespace core {
     string PathManager::getnotesfolder()
     {
         return notesfolder;
+    }
+    string PathManager::getattachmentfolder()
+    {
+        return attachmentfolder;
     }
 
 } // core

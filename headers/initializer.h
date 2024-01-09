@@ -51,7 +51,6 @@ namespace core {
         void initialize();
         void setprofilevalues();
         void initializetagfile();
-
     };
 
 } // core
