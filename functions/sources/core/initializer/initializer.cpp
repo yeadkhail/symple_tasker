@@ -208,7 +208,7 @@ namespace core {
                 throw filenotcreated();
             }
             tagfile << "1^important"<<endl;
-            tagfile << "2^not-important"<<endl;
+            tagfile << "0^not-important"<<endl;
             tagfile.close();
         }
         void initializer::initialize()
