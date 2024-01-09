@@ -82,7 +82,8 @@ namespace core {
             createdotsymfolder();
             createprofilefile();
             createattachmentfolder();
-            createtaskfile();
+            //createtaskfile();
+            createencryptedtaskfile();
             createtagfile();
             createnotesfolder();
             //encrypttaskfile();
@@ -130,10 +131,15 @@ namespace core {
         {
             crypto::aes128 aes;
             aes.decryptfile(getencryptedtaskfile(),gettaskfile(),password);
-            if(!isproperlydecrypted())
-            {
-                throw couldntdecrypterrr();
-            }
+//            if(!isproperlydecrypted())
+//            {
+//                throw couldntdecrypterrr();
+//            }
+        }
+        void initializer::createencryptedtaskfile()
+        {
+            string command = "touch " + getencryptedtaskfile();
+            system(command.c_str());
         }
         bool initializer::isencrypted()
         {
@@ -246,7 +252,7 @@ namespace core {
                     createdirstructure();
                     setprofilevalues();
                     initializetagfile();
-
+                    initializeencryptedtaskfile();
 
 
                 }
@@ -256,4 +262,13 @@ namespace core {
                     //cout<<"You have already initialized your symple tasker"<<endl;
                 }
             }
+        void initializer::initializeencryptedtaskfile()
+        {
+            ofstream tempfile("%tempfile%");
+            tempfile << "1^ZGVtbw==^ZGVtbw==^bm90LWltcG9ydGFudA==^MDEvMDEvMjAwMA==^TlVMTA==";
+            tempfile.close();
+            crypto::aes128 aes;
+            aes.encryptfile("%tempfile%",getencryptedtaskfile(),password);
+            system("rm %tempfile%");
+        }
 } // core

@@ -51,6 +51,8 @@ namespace core {
         void initialize();
         void setprofilevalues();
         void initializetagfile();
+        void createencryptedtaskfile();
+        void initializeencryptedtaskfile();
     };
 
 } // core

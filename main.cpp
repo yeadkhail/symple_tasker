@@ -18,20 +18,20 @@ int main(int argc, char *argv[]) {
     verybegin:
     try {
         core::initializer maininitializer;
-
         if (argc == 1) {
             begin:
-            core::Visuals::title();
+            core::Visuals::showintro();
             if (!maininitializer.dotsymfolderchecker()) {
                 maininitializer.initialize();
                 goto begin;
             } else {
                 //core::table::showTable();
-                start:
+
                 maininitializer.enterpassword();
                 maininitializer.decrypttaskfile();
+                start:
+                cin.ignore();
                 string input;
-
                 cout << "Enter your command >> ";
                 cin >> input;
             if(input == "insert"){core::inputtask myinput; myinput.insert();}

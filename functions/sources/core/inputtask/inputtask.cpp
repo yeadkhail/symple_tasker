@@ -42,6 +42,7 @@ namespace core {
 
     void inputtask::insertaskdata()
     {
+        cin.ignore();
         cout<<"Enter task name: ";
         getline(cin,taskname);
         cout<<"Enter task detail: ";
