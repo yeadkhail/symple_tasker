@@ -3,8 +3,83 @@
 //
 
 #include "../../../../headers/table.h"
+#include "../../../../headers/PathManager.h"
+#include "../../../../headers/Task.h"
+using namespace std;
 
-namespace core {
+namespace core
+{
+    void table::modifyFilesForTable()
+    {
+        // Close and clear contents of existing files
+        for (int i = 1; i <= 4; ++i)
+        {
+            string fileName = "data" + to_string(i) + ".txt";
+            ofstream outputFile(fileName);
+
+            if (outputFile.is_open())
+            {
+                outputFile.close();
+            }
+            else
+            {
+                cerr << "Error creating/clearing the file " << fileName << ".\n";
+            }
+        }
+
+        // Open files for writing
+        ofstream outputFile11("data1.txt");
+        ofstream outputFile12("data2.txt");
+        ofstream outputFile13("data3.txt");
+        ofstream outputFile14("data4.txt");
+
+        // Check if files are successfully opened
+        if (!outputFile11.is_open() || !outputFile12.is_open() || !outputFile13.is_open() || !outputFile14.is_open())
+        {
+            cerr << "Error opening one or more output files.\n";
+            return;
+        }
+
+        string taskfile = PathManager::gettaskfile();
+        ifstream workfile(taskfile);
+
+        if (!workfile.is_open())
+        {
+            cerr << "Error opening the task file " << taskfile << ".\n";
+            return;
+        }
+
+        string lineee;
+        int count1 = 0, count2 = 0, count3 = 0, count4 = 0;
+
+        while (getline(workfile, lineee))
+        {
+            core::Task mytask(lineee);
+            std::string taskName = mytask.gettaskname();
+
+            if (mytask.isUrgent() && mytask.isimportant())
+            {
+                count1++;
+                outputFile11 << count1 << ". " << taskName << std::endl;
+            }
+            else if (!mytask.isUrgent() && mytask.isimportant())
+            {
+                count2++;
+                outputFile12 << count2 << ". " << taskName << std::endl;
+            }
+            else if (mytask.isUrgent() && !mytask.isimportant())
+            {
+                count3++;
+                outputFile13 << count3 << ". " << taskName << std::endl;
+            }
+            else if (!mytask.isUrgent() && !mytask.isimportant())
+            {
+                count4++;
+                outputFile14 << count4 << ". " << taskName << std::endl;
+            }
+        }
+    }
+
 
     void table::FilesForTable()
     {
@@ -36,12 +111,7 @@ namespace core {
             }
             else
             {
-                if (line.length() == 1)
-                    outputFile << line << " " << endl;
-                else
-                {
-                    outputFile << line << endl;
-                }
+                outputFile << line << endl;
             }
         }
         inputFile.close();
@@ -74,12 +144,8 @@ namespace core {
             }
             else
             {
-                if (line.length() == 1)
-                    outputFile2 << line << " " << endl;
-                else
-                {
-                    outputFile2 << line << endl;
-                }
+
+                outputFile2 << line << endl;
             }
         }
 
@@ -113,12 +179,8 @@ namespace core {
             }
             else
             {
-                if (line.length() == 1)
-                    outputFile3 << line << " " << endl;
-                else
-                {
-                    outputFile3 << line << endl;
-                }
+
+                outputFile3 << line << endl;
             }
         }
 
@@ -152,12 +214,7 @@ namespace core {
             }
             else
             {
-                if (line.length() == 1)
-                    outputFile4 << line << " " << endl;
-                else
-                {
-                    outputFile4 << line << endl;
-                }
+                outputFile4 << line << endl;
             }
         }
 
@@ -169,161 +226,6 @@ namespace core {
 
     void table::fileChangerForOutputTable()
     {
-        ifstream inputFile("data1.txt");
-
-        if (!inputFile)
-        {
-            cout << "Failed to open the file." << endl;
-            return;
-        }
-
-        ofstream outputFile("d1.txt");
-
-        if (!outputFile)
-        {
-            cout << "Failed to create the output file." << endl;
-            return;
-        }
-
-        string line;
-        while (getline(inputFile, line))
-        {
-            if (line.length() > 30)
-            {
-                string firstPart = line.substr(0, 29);
-                string secondPart = line.substr(29);
-                outputFile << firstPart << '-' << endl
-                           << secondPart << endl;
-            }
-            else
-            {
-                if (line.length() == 1)
-                    outputFile << line << " " << endl;
-                else
-                {
-                    outputFile << line << endl;
-                }
-            }
-        }
-        inputFile.close();
-        outputFile.close();
-
-        ifstream inputFile2("data2.txt");
-
-        if (!inputFile2)
-        {
-            cout << "Failed to open the file." << endl;
-            return;
-        }
-
-        ofstream outputFile2("d2.txt");
-
-        if (!outputFile2)
-        {
-            cout << "Failed to create the output file." << std::endl;
-            return;
-        }
-
-        while (getline(inputFile2, line))
-        {
-            if (line.length() > 30)
-            {
-                string firstPart = line.substr(0, 29);
-                string secondPart = line.substr(29);
-                outputFile2 << firstPart << endl
-                            << secondPart << endl;
-            }
-            else
-            {
-                if (line.length() == 1)
-                    outputFile2 << line << " " << endl;
-                else
-                {
-                    outputFile2 << line << endl;
-                }
-            }
-        }
-
-        inputFile2.close();
-        outputFile2.close();
-
-        ifstream inputFile3("data3.txt");
-
-        if (!inputFile3)
-        {
-            cout << "Failed to open the file." << endl;
-            return;
-        }
-
-        ofstream outputFile3("d3.txt");
-
-        if (!outputFile3)
-        {
-            cerr << "Failed to create the output file." << endl;
-            return;
-        }
-
-        while (getline(inputFile3, line))
-        {
-            if (line.length() > 30)
-            {
-                string firstPart = line.substr(0, 29);
-                string secondPart = line.substr(29);
-                outputFile3 << firstPart << "-" << endl
-                            << secondPart << " " << endl;
-            }
-            else
-            {
-                if (line.length() == 1)
-                    outputFile3 << line << " " << endl;
-                else
-                {
-                    outputFile3 << line << endl;
-                }
-            }
-        }
-
-        inputFile3.close();
-        outputFile3.close();
-
-        ifstream inputFile4("data4.txt");
-
-        if (!inputFile4)
-        {
-            cerr << "Failed to open the file." << endl;
-            return;
-        }
-
-        ofstream outputFile4("d4.txt");
-
-        if (!outputFile4)
-        {
-            cerr << "Failed to create the output file." << endl;
-            return;
-        }
-
-        while (getline(inputFile4, line))
-        {
-            if (line.length() > 30)
-            {
-                string firstPart = line.substr(0, 29);
-                string secondPart = line.substr(29);
-                outputFile4 << firstPart << '-' << endl
-                            << secondPart << " " << endl;
-            }
-            else
-            {
-                if (line.length() == 1)
-                    outputFile4 << line << " " << endl;
-                else
-                {
-                    outputFile4 << line << endl;
-                }
-            }
-        }
-        inputFile4.close();
-        outputFile4.close();
-
         return;
     }
 
@@ -353,11 +255,9 @@ namespace core {
         }
 
         string line1, line2;
-        while (getline(file1, line1) && getline(file2, line2))
+        while ((getline(file1, line1)) && getline(file2, line2))
         {
-
             string concat = "";
-
             for (int i = 0; i < line1.length(); i++)
             {
                 concat += line1[i];
@@ -540,10 +440,9 @@ namespace core {
         string line2 = "";
         string space2 = "                    ";
 
-        while (!fin2.eof())
+        while (getline(fin2, line2))
         {
             setvbuf(stdin, NULL, _IONBF, 0);
-            getline(fin2, line2);
             istringstream iss2(line2);
             string urg;
             string nurg;
@@ -556,12 +455,25 @@ namespace core {
         fin.close();
         return;
     }
+    void table::deleteFiles()
+    {
+        for (int i = 1; i <= 4; ++i) {
+            std::string fileName = "data" + std::to_string(i) + ".txt";
+            if (std::remove(fileName.c_str()) == 0) {
+                continue;
+            } else {
+                std::cerr << "Error deleting the file " << fileName << ".\n";
+            }
+        }
+    }
     void table::showTable()
     {
+        modifyFilesForTable();
         FilesForTable();
         fileChangerForOutputTable();
         finalFileChangerForOutputTable();
         outputTable();
+        deleteFiles();
         return;
     }
 } // core
