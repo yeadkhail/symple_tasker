@@ -62,8 +62,9 @@ namespace core {
 //            //cout << "hello" << endl;
 //            taskdata.attachment = destinationFilePath;
 //            //cout<< taskdata.attachment;
+                attachment = "";
         }
         else
-            attachment = "NULL";
+            attachment = "";
     }
 } // core

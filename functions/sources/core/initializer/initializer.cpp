@@ -120,12 +120,20 @@ namespace core {
         void initializer::encrypttaskfile()
         {
             crypto::aes128 aes;
-            aes.encryptfile(gettaskfile(),getencryptedtaskfile(),password);
+            int tocheck = aes.encryptfile(gettaskfile(),getencryptedtaskfile(),password);
+            if(tocheck == -1)
+            {
+                throw couldntencrypterrr();
+            }
         }
         void initializer::decrypttaskfile()
         {
             crypto::aes128 aes;
             aes.decryptfile(getencryptedtaskfile(),gettaskfile(),password);
+            if(!isproperlydecrypted())
+            {
+                throw couldntdecrypterrr();
+            }
         }
         bool initializer::isencrypted()
         {
@@ -174,6 +182,10 @@ namespace core {
         {
              ofstream profile;
              profile.open(getprofilefile());
+             if(!profile)
+             {
+                 throw filenotcreated();
+             }
                 profile << "Name: " << name << endl;
                 profile << "Phone Number: " << phone << endl;
                 profile << "Email: " << email << endl;
@@ -185,6 +197,10 @@ namespace core {
         {
             ofstream tagfile;
             tagfile.open(gettagfile());
+            if(!tagfile)
+            {
+                throw filenotcreated();
+            }
             tagfile << "1^important"<<endl;
             tagfile << "2^not-important"<<endl;
             tagfile.close();

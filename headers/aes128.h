@@ -397,21 +397,21 @@ namespace crypto {
                 kp++;
             }
         }
-        void encryptfile(string decrptedfile, string encryptedfile, string key)
+        int encryptfile(string decrptedfile, string encryptedfile, string key)
         {
             ifstream file;
             file.open(decrptedfile, ios::binary);
             if (!file.is_open())
             {
                 cout << "Error opening file";
-                return;
+                return -1;
             }
             ofstream file2;
             file2.open(encryptedfile, ios::binary);
             if (!file2.is_open())
             {
                 cout << "Error opening file";
-                return;
+                return -1;
             }
             unsigned char * temp = new unsigned char[16];
             unsigned char * extendedkeys = new unsigned char[176];
@@ -424,6 +424,7 @@ namespace crypto {
             }
             file.close();
             file2.close();
+            return 0;
         }
         void removeLastLine(const std::string& filename) {
             std::ifstream inputFile(filename);

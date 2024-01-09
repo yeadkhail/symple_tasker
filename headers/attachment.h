@@ -4,10 +4,11 @@
 
 #ifndef SYMPLE_TASKER_ATTACHMENT_H
 #define SYMPLE_TASKER_ATTACHMENT_H
-
+#include "PathManager.h"
 namespace core {
 
-    class attachment {
+    class attachment : public PathManager  // inherit from Task
+    {
 
     };
 

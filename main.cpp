@@ -12,35 +12,34 @@
 using namespace std;
 
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 
     //=================================================main body of code starts here == you may comment them while testing=====================================
+    verybegin:
+    try {
+        core::initializer maininitializer;
 
-    core::initializer maininitializer;
+        if (argc == 1) {
+            begin:
+            core::Visuals::title();
+            if (!maininitializer.dotsymfolderchecker()) {
+                maininitializer.initialize();
+                goto begin;
+            } else {
+                //core::table::showTable();
+                start:
+                maininitializer.enterpassword();
+                maininitializer.decrypttaskfile();
+                string input;
 
-    if(argc == 1) {
-        begin:
-        core::Visuals::title();
-        if(!maininitializer.dotsymfolderchecker())
-        {
-            maininitializer.initialize();
-            goto begin;
-        }
-        else
-        {
-            //core::table::showTable();
-            start:
-            string input;
-
-            cout << "Enter your command >> ";
-            cin >> input;
-//            if(input == "insert") core::inputtask::insert();
+                cout << "Enter your command >> ";
+                cin >> input;
+            if(input == "insert"){core::inputtask myinput; myinput.insert();}
 //            else if(input == "edit-task") core::inputtask::TaskEdit();
 //            else if(input == "delete-task") core::inputtask::TaskDelete();
-            //else if(input == "update") updateTask();
-            //else if(input == "show") showTask();
-            if(input == "help") core::Visuals::showhelp();
+                //else if(input == "update") updateTask();
+                //else if(input == "show") showTask();
+                if (input == "help") core::Visuals::showhelp();
 //            else if(input == "version") core::Visuals::version();
 //            else if(input == "randomizer") core::Visuals::randomizer();
 //            else if(input == "edit-tag") core::taghandler::TagEdit();
@@ -50,26 +49,53 @@ int main(int argc, char *argv[])
 //            else if(input == "show-attachment") core::Visuals::findAttachment();
 //            else if(input == "show-expired") core::Visuals::showExpired();
 //            else if(input == "history") core::Visuals::history();
-            else if(input == "show-table"){ core::table mytable; mytable.showTable();}
-            else if(input == "clear") system("clear");  //system("cls");
-            else if(input == "exit")
-            {
-                system("sleep 1");
-                cout << "Encrypting your data" << endl;
-                system("sleep 1");
-                maininitializer.encrypttaskfile();
-                cout << "Exiting the program" << endl;
-                system("clear");
-                exit(0);
-            }
-            else cout << "Invalid command" << endl;
-            if(input != "exit" )
-            {
-                goto start;
+                else if (input == "show-table") {
+                    core::table mytable;
+                    mytable.showTable();
+                } else if (input == "clear") system("clear");  //system("cls");
+                else if (input == "exit") {
+                    system("sleep 1");
+                    cout << "Encrypting your data" << endl;
+                    system("sleep 1");
+                    maininitializer.encrypttaskfile();
+                    cout << "Exiting the program" << endl;
+                    system("clear");
+                    exit(0);
+                } else cout << "Invalid command" << endl;
+                if (input != "exit") {
+                    goto start;
+                }
             }
         }
-
     }
+    catch (const std::exception &e) {
+        std::cerr << e.what() << '\n';
+    }
+    catch(core::initializer::filenotcreated &e)
+    {
+        std::cerr << "Error: File not created" << '\n';
+    }
+    catch(core::initializer::couldntencrypterrr &e)
+    {
+        std::cerr << "Error: Could not encrypt the file" << '\n';
+    }
+    catch(core::initializer::couldntdecrypterrr &e)
+    {
+        std::cout << "Error: Could not decrypt the file" << '\n';
+        std::cout << "Do you want to try again?(y/n): ";
+        char choice;
+        std::cin >> choice;
+        if(choice == 'y')
+        {
+            goto verybegin;
+        }
+        else
+        {
+            std::cout << "Exiting the program" << std::endl;
+            exit(0);
+        }
+    }
+
 
 
 

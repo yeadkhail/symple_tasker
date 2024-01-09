@@ -19,9 +19,11 @@ namespace core {
         string email;
         string address;
         string password;
+
+    public:
         class filenotcreated{};
         class couldntencrypterrr{};
-    public:
+        class couldntdecrypterrr{};
         void setname(string _name);
         void setphone(string _phone);
         void setemail(string _email);
