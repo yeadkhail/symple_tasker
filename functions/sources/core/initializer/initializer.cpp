@@ -62,6 +62,7 @@ namespace core {
             // Restore terminal settings
             tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
             std::cout << std::endl; // Move to the next line after password entry
+            return password;
         }
      bool initializer::dotsymfolderchecker()
      {

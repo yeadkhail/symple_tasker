@@ -8,6 +8,7 @@
 #include "headers/table.h"
 #include "headers/aes128.h"
 #include "headers/initializer.h"
+
 using namespace std;
 
 
@@ -31,6 +32,7 @@ int main(int argc, char *argv[])
             //core::table::showTable();
             start:
             string input;
+
             cout << "Enter your command >> ";
             cin >> input;
 //            if(input == "insert") core::inputtask::insert();
@@ -48,7 +50,7 @@ int main(int argc, char *argv[])
 //            else if(input == "show-attachment") core::Visuals::findAttachment();
 //            else if(input == "show-expired") core::Visuals::showExpired();
 //            else if(input == "history") core::Visuals::history();
-//            else if(input == "show-table") core::Visuals::showTable();
+            else if(input == "show-table"){ core::table mytable; mytable.showTable();}
             else if(input == "clear") system("clear");  //system("cls");
             else if(input == "exit")
             {
