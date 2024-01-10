@@ -25,6 +25,7 @@ namespace core {
         bool isTagExist(string tagname);
         static bool isimportant(string tagname);
         bool isimportant();
+        void inputtag();
     };
 
 } // core

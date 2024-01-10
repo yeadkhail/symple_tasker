@@ -35,9 +35,11 @@ int main(int argc, char *argv[]) {
                 start:
                 //cin.ignore();
                 string input;
+                cin.ignore();
                 cout << "Enter your command >> ";
                 cin >> input;
             if(input == "insert"){core::inputtask myinput; myinput.insert();}
+            if(input == "insert-tag"){core::taghandler mytaghandler; mytaghandler.inputtag();}
             if(input== "showurgent"){core::outputtask myoutput; myoutput.showUrgent();}
             if(input == "showimportant"){core::outputtask myoutput; myoutput.showImportant();}
             if(input == "shownoturgent"){core::outputtask myoutput; myoutput.shownotUrgent();}

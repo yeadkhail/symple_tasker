@@ -81,4 +81,13 @@ namespace core {
             return false;
         }
     }
+    void taghandler::inputtag()
+    {
+        cin.ignore();
+        cout<<"Enter tag name: ";
+        getline(cin,tagname);
+        cout << "What shall be the importance? (1 for Important and 0 for Not important): ";
+        cin>>importance;
+        inserttag();
+    }
 } // core

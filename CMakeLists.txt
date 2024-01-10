@@ -7,4 +7,5 @@ add_executable(symple_tasker main.cpp functions/sources/core/Task/Task.cpp heade
         functions/sources/core/initializer/initializer.cpp
         functions/sources/crypto/aes128/aes128.cpp
         headers/aes128.h
+        headers/outputtask.h
         functions/sources/core/outputtask/outputtask.cpp)
