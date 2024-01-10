@@ -17,7 +17,8 @@ namespace core {
         if (!read.is_open())
         {
             cout << "Error while opening file" << endl;
-            exit(1);
+            //exit(1);
+            return -1;
         }
         int numLines = 0;
         std::string unused;
@@ -33,8 +34,8 @@ namespace core {
             cout << "Error appending to the file: " << filename << endl;
             return 0;
         }
-
-        app << insert << endl;
+        app << endl;
+        app << insert;
         app.close();
 
         return 0;

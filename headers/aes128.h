@@ -403,14 +403,14 @@ namespace crypto {
             file.open(decrptedfile, ios::binary);
             if (!file.is_open())
             {
-                cout << "Error opening file";
+                cout << "Error opening file1";
                 return -1;
             }
             ofstream file2;
             file2.open(encryptedfile, ios::binary);
             if (!file2.is_open())
             {
-                cout << "Error opening file";
+                cout << "Error opening file2";
                 return -1;
             }
             unsigned char * temp = new unsigned char[16];
@@ -426,37 +426,112 @@ namespace crypto {
             file2.close();
             return 0;
         }
+//        void removeLastLine(const std::string& filename) {
+//            std::ifstream inputFile(filename);
+//            std::vector<std::string> lines;
+//            std::string line;
+//
+//            if (inputFile.is_open()) {
+//                while (getline(inputFile, line)) {
+//                    lines.push_back(line);
+//                }
+//                inputFile.close();
+//
+//                if (!lines.empty()) {
+//                    lines.pop_back(); // Remove the last line
+//                }
+//
+//                std::ofstream outputFile(filename);
+//                if (outputFile.is_open()) {
+//                    for (size_t i = 0; i < lines.size(); ++i) {
+//                        outputFile << lines[i];
+//                        if (i != lines.size() - 1) {
+//                            outputFile << std::endl; // Add newline except for the last line
+//                        }
+//                    }
+//                    outputFile.close();
+//                    //std::cout << "Last line removed successfully!" << std::endl;
+//                } else {
+//                    std::cout << "Unable to open output file." << std::endl;
+//                }
+//            } else {
+//                std::cout << "Unable to open input file." << std::endl;
+//            }
+//        }
+//        void removeLastLine(const std::string& filename) {
+//            std::ifstream inputFile(filename);
+//            std::vector<std::string> lines;
+//            std::string line;
+//
+//            if (!inputFile.is_open()) {
+//                std::cerr << "Unable to open the file.\n";
+//                return;
+//            }
+//
+//            while (std::getline(inputFile, line)) {
+//                lines.push_back(line);
+//            }
+//
+//            inputFile.close();
+//
+//            if (!lines.empty()) {
+//                lines.pop_back(); // Remove the last line
+//            } else {
+//                std::cerr << "File is empty.\n";
+//                return;
+//            }
+//
+//            std::ofstream outputFile(filename, std::ios::trunc);
+//
+//            if (!outputFile.is_open()) {
+//                std::cerr << "Unable to open the file for writing.\n";
+//                return;
+//            }
+//
+//            for (const auto& l : lines) {
+//                outputFile << l << '\n';
+//            }
+//
+//            outputFile.close();
+//        }
         void removeLastLine(const std::string& filename) {
             std::ifstream inputFile(filename);
             std::vector<std::string> lines;
             std::string line;
 
-            if (inputFile.is_open()) {
-                while (getline(inputFile, line)) {
-                    lines.push_back(line);
-                }
-                inputFile.close();
-
-                if (!lines.empty()) {
-                    lines.pop_back(); // Remove the last line
-                }
-
-                std::ofstream outputFile(filename);
-                if (outputFile.is_open()) {
-                    for (size_t i = 0; i < lines.size(); ++i) {
-                        outputFile << lines[i];
-                        if (i != lines.size() - 1) {
-                            outputFile << std::endl; // Add newline except for the last line
-                        }
-                    }
-                    outputFile.close();
-                    //std::cout << "Last line removed successfully!" << std::endl;
-                } else {
-                    std::cout << "Unable to open output file." << std::endl;
-                }
-            } else {
-                std::cout << "Unable to open input file." << std::endl;
+            if (!inputFile.is_open()) {
+                std::cerr << "Unable to open the file.\n";
+                return;
             }
+
+            while (std::getline(inputFile, line)) {
+                lines.push_back(line);
+            }
+
+            inputFile.close();
+
+            if (lines.size() == 1) {
+                lines[0].erase(lines[0].find_last_not_of(" \t\r\n") + 1); // Remove newline from the last line
+            } else if (lines.size() >= 2) {
+                lines[lines.size() - 2].erase(lines[lines.size() - 2].find_last_not_of(" \t\r\n") + 1); // Remove newline from the second-to-last line
+                lines[lines.size() - 1].clear(); // Clear the last line
+            } else {
+                std::cerr << "File has less than one line.\n";
+                return;
+            }
+
+            std::ofstream outputFile(filename, std::ios::trunc);
+
+            if (!outputFile.is_open()) {
+                std::cerr << "Unable to open the file for writing.\n";
+                return;
+            }
+
+            for (const auto& l : lines) {
+                outputFile << l << '\n';
+            }
+
+            outputFile.close();
         }
         void decryptfile(string encryptedfile, string decryptedfile, string key)
         {
@@ -468,7 +543,7 @@ namespace crypto {
                 return;
             }
             ofstream file2;
-            file2.open(decryptedfile, ios::binary);
+            file2.open(decryptedfile,std::ios::out | ios::binary);
             if (!file2.is_open())
             {
                 cout << "Error opening file";
@@ -486,10 +561,11 @@ namespace crypto {
             file.close();
             file2.close();
             removeLastLine(decryptedfile);
-            ofstream file3;
-            file3.open(decryptedfile,ios::app);
-            file3<< '\n';
-            file3.close();
+            removeLastLine(decryptedfile);
+//            ofstream file3;
+//            file3.open(decryptedfile,ios::app);
+//            file3<< '\n';
+//            file3.close();
         }
 
     };

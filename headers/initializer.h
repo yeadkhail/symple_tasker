@@ -9,9 +9,12 @@
 #include <termios.h>
 #include <unistd.h>
 #include "../functions/sources/crypto/aes128/aes128.cpp"
+#include <iostream>
+#include <fstream>
+
 namespace core {
 
-    class initializer: public PathManager
+    class initializer: virtual public PathManager
     {
     private:
         string name;

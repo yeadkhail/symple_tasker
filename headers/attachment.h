@@ -9,7 +9,7 @@
 #include <fstream>
 namespace core {
 
-    class attachment : public PathManager  // inherit from Task
+    class attachment : virtual public PathManager  // inherit from Task
     {
     private:
         string attachmentname;

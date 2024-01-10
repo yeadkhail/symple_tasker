@@ -11,7 +11,7 @@
 #include <fstream>
 namespace core {
 
-    class taghandler : public PathManager{
+    class taghandler : virtual public PathManager{
     private:
         string tagname;
         int importance;

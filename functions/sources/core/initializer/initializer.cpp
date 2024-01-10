@@ -57,6 +57,10 @@ namespace core {
             tcsetattr(STDIN_FILENO, TCSANOW, &newt);
 
             // Read the password
+            if(cin.peek() == '\n')
+            {
+                cin.ignore();
+            }
             std::cin >> password;
 
             // Restore terminal settings
@@ -64,7 +68,7 @@ namespace core {
             std::cout << std::endl; // Move to the next line after password entry
             return password;
         }
-     bool initializer::dotsymfolderchecker()
+        bool initializer::dotsymfolderchecker()
      {
          ifstream checker;
          checker.open(getsymfolder());
@@ -130,6 +134,7 @@ namespace core {
         void initializer::decrypttaskfile()
         {
             crypto::aes128 aes;
+            cout << password<< endl;
             aes.decryptfile(getencryptedtaskfile(),gettaskfile(),password);
 //            if(!isproperlydecrypted())
 //            {
@@ -174,7 +179,7 @@ namespace core {
         {
             string part;
             getline(checker,part,'^');
-            if(isNumber(part))
+            if(part == "1")
             {
                 return true;
             }
@@ -253,8 +258,6 @@ namespace core {
                     setprofilevalues();
                     initializetagfile();
                     initializeencryptedtaskfile();
-
-
                 }
                 else
                 {
@@ -264,11 +267,18 @@ namespace core {
             }
         void initializer::initializeencryptedtaskfile()
         {
-            ofstream tempfile("%tempfile%");
+            enterpassword();
+            std::string mytempfile = gettaskfile();
+            ofstream tempfile(mytempfile);
             tempfile << "1^ZGVtbw==^ZGVtbw==^bm90LWltcG9ydGFudA==^MDEvMDEvMjAwMA==^TlVMTA==";
             tempfile.close();
-            crypto::aes128 aes;
-            aes.encryptfile("%tempfile%",getencryptedtaskfile(),password);
-            system("rm %tempfile%");
+            crypto::aes128 myaes;
+            cout << password << endl;
+            cout << mytempfile << endl;
+            cout << getencryptedtaskfile() << endl;
+            myaes.encryptfile(mytempfile,getencryptedtaskfile(),password);
+            cout << "done" << endl;
+            remove(mytempfile.c_str());
         }
+
 } // core

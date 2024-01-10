@@ -9,7 +9,7 @@
 
 namespace core {
 
-class inputtask : public Task,public PathManager  // inherit from Task
+class inputtask : virtual public Task,virtual public PathManager  // inherit from Task
     {
     protected:
 

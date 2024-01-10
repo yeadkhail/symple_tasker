@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
             } else {
                 //core::table::showTable();
 
-                maininitializer.enterpassword();
+                //maininitializer.enterpassword();
                 maininitializer.decrypttaskfile();
                 start:
                 cin.ignore();
@@ -159,7 +159,14 @@ int main(int argc, char *argv[]) {
 //    mytable.showTable();
 //    core::PathManager p;
 //    crypto::aes128 myaes;
-//    //myaes.encryptfile(p.gettaskfile(),p.getencryptedtaskfile(),"1234567890123456");
-//    myaes.decryptfile(p.getencryptedtaskfile(),p.gettaskfile(),"1234567890123456");
+//   string password = "12345";
+//    cin >> password;
+//    myaes.encryptfile(p.gettaskfile(),p.getencryptedtaskfile(),password);
+//    //cin >> password;
+//    remove(p.gettaskfile().c_str());
+//    //myaes.decryptfile(p.getencryptedtaskfile(),p.gettaskfile(),password);
+//    core::initializer myinitializer;
+//    myinitializer.enterpassword();
+//    myinitializer.decrypttaskfile();
     return 0;
 }
