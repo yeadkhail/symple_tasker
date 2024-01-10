@@ -19,7 +19,7 @@ namespace core  {
         void showUrgentnotImportant();
         void shownotUrgentImportant();
         void shownotUrgentnotImportant();
-//        ~ outputtask();
+//        ~outputtask();
     };
 }//core
 

@@ -225,7 +225,7 @@ namespace core
     }
     Task::Task(std::string line)
     {
-        std::istringstream iss(line); //1^presentation^make the presentation slides^project^23/05/2023^NULL	example
+        std::istringstream iss(line); //1^ZGVtbw==^ZGVtbw==^bm90LWltcG9ydGFudA==^MDEvMDEvMjAwMA==^TlVMTA==
         std::string part;
         getline(iss, part, '^');
         getline(iss, part, '^');
@@ -254,7 +254,7 @@ namespace core
         packedtask += crypto::base64::encode(taskdetail) + "^";
         packedtask += crypto::base64::encode(tasktag) + "^";
         packedtask += crypto::base64::encode(date) + "^";
-        packedtask += crypto::base64::encode(attachment);
+        packedtask += crypto::base64::encode(attachment) + "^";
         return packedtask;
     }
     bool Task::isExpired()

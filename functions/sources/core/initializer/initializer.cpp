@@ -138,10 +138,10 @@ namespace core {
             crypto::aes128 myaes;
             //cout << password<< endl;
             myaes.decryptfile(getencryptedtaskfile(),gettaskfile(),password);
-//            if(!isproperlydecrypted())
-//            {
-//                throw couldntdecrypterrr();
-//            }
+            if(!isproperlydecrypted())
+            {
+                throw couldntdecrypterrr();
+            }
         }
         void initializer::createencryptedtaskfile()
         {
@@ -181,7 +181,7 @@ namespace core {
         {
             string part;
             getline(checker,part);
-            if(part == "1^ZGVtbw==^ZGVtbw==^bm90LWltcG9ydGFudA==^MDEvMDEvMjAwMA==^TlVMTA==")
+            if(part == "0^ZGVtbw==^ZGVtbw==^bm90LWltcG9ydGFudA==^MDEvMDEvMjAwMA==^TlVMTA==^")
             {
                 return true;
             }
@@ -274,7 +274,7 @@ namespace core {
             //enterpassword();
             std::string mytempfile = gettaskfile();
             ofstream tempfile(mytempfile);
-            string inputstring = "1^ZGVtbw==^ZGVtbw==^bm90LWltcG9ydGFudA==^MDEvMDEvMjAwMA==^TlVMTA==";
+            string inputstring = "0^ZGVtbw==^ZGVtbw==^bm90LWltcG9ydGFudA==^MDEvMDEvMjAwMA==^TlVMTA==^";
             tempfile << inputstring << endl ;
             tempfile.close();
             crypto::aes128 myaes;

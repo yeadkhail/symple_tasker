@@ -6,12 +6,17 @@
 #define SYMPLE_TASKER_TASKTRAVERSER_H
 #include "Task.h"
 #include "taghandler.h"
+#include "PathManager.h"
+#include <iostream>
+#include <cstring>
+#include <fstream>
+#include <vector>
 namespace core {
-
-    class tasktraverser : public Task, public taghandler  // inherit from Task, taghandler
+    using namespace std;
+    class tasktraverser : virtual public Task, virtual public taghandler,virtual public PathManager  // inherit from Task, taghandler,pathmanager
     {
     protected:
-        std::vector <string> _taskName;
+        std::vector<string> _taskName;
         std::vector <string> _taskDetail;
         std::vector <string> _taskTag;
         std::vector <string> _taskDate;

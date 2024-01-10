@@ -42,7 +42,7 @@ int main(int argc, char *argv[]) {
                 //else if(input == "update") updateTask();
                 //else if(input == "show") showTask();
                 if (input == "help") core::Visuals::showhelp();
-//            else if(input == "version") core::Visuals::version();
+            else if(input == "version") core::Visuals::showversion();
 //            else if(input == "randomizer") core::Visuals::randomizer();
 //            else if(input == "edit-tag") core::taghandler::TagEdit();
 //            else if(input =="delete-tag") core::taghandler::TagDelete();
@@ -73,16 +73,9 @@ int main(int argc, char *argv[]) {
         {
             string input = argv[1];
             if(input == "--help") core::Visuals::showhelp();
-//            else if(input == "--version") core::Visuals::version();
+            else if(input == "--version") core::Visuals::showversion();
 //            else if(input == "--randomizer") core::Visuals::randomizer();
-//            else if(input == "--history") core::Visuals::history();
             else if(input == "--clear") system("clear");
-            else if(input == "--show-table") {
-                core::table mytable;
-                mytable.showTable();
-            }
-//            else if(input == "--show-expired") core::Visuals::showExpired();
-//            else if(input == "--show-attachment") core::Visuals::findAttachment();
             else cout << "Invalid command" << endl;
         }
 

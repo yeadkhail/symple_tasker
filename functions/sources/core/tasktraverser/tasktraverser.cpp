@@ -9,6 +9,7 @@
 #include <vector>
 
 namespace core {
+    using namespace std;
     void tasktraverser::findTask(int taskNum){ ///Done
         string filename = gettaskfile();
         ifstream read(filename);

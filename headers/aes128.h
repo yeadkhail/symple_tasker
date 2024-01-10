@@ -494,44 +494,78 @@ namespace crypto {
 //
 //            outputFile.close();
 //        }
+//        void removeLastLine(const std::string& filename) {
+//            std::ifstream inputFile(filename);
+//            std::vector<std::string> lines;
+//            std::string line;
+//
+//            if (!inputFile.is_open()) {
+//                std::cerr << "Unable to open the file.\n";
+//                return;
+//            }
+//
+//            while (std::getline(inputFile, line)) {
+//                lines.push_back(line);
+//            }
+//
+//            inputFile.close();
+//
+//            if (lines.size() == 1) {
+//                lines[0].erase(lines[0].find_last_not_of(" \t\r\n") + 1); // Remove newline from the last line
+//            } else if (lines.size() >= 2) {
+//                lines[lines.size() - 2].erase(lines[lines.size() - 2].find_last_not_of(" \t\r\n") + 1); // Remove newline from the second-to-last line
+//                lines[lines.size() - 1].clear(); // Clear the last line
+//            } else {
+//                std::cerr << "File has less than one line.\n";
+//                return;
+//            }
+//
+//            std::ofstream outputFile(filename, std::ios::trunc);
+//
+//            if (!outputFile.is_open()) {
+//                std::cerr << "Unable to open the file for writing.\n";
+//                return;
+//            }
+//
+//            for (const auto& l : lines) {
+//                outputFile << l << '\n';
+//            }
+//
+//            outputFile.close();
+//        }
         void removeLastLine(const std::string& filename) {
-            std::ifstream inputFile(filename);
-            std::vector<std::string> lines;
+            char symbol = '^';
+            std::ifstream file(filename);
+            if (!file.is_open()) {
+                std::cerr << "Error opening file!" << std::endl;
+                return;
+            }
+
+            std::string contents;
             std::string line;
+            size_t lastFound = std::string::npos;
+            while (std::getline(file, line)) {
+                auto found = line.find_last_of(symbol);
+                if (found != std::string::npos) {
+                    lastFound = contents.size() + found; // Keep track of the position of the last '^' character
+                }
+                contents += line + "\n";
+            }
 
-            if (!inputFile.is_open()) {
-                std::cerr << "Unable to open the file.\n";
+            file.close();
+
+            if (lastFound != std::string::npos) {
+                contents = contents.substr(0, lastFound + 1); // Include the '^' character and characters before it
+            }
+
+            std::ofstream outFile(filename);
+            if (!outFile.is_open()) {
+                std::cerr << "Error opening output file!" << std::endl;
                 return;
             }
 
-            while (std::getline(inputFile, line)) {
-                lines.push_back(line);
-            }
-
-            inputFile.close();
-
-            if (lines.size() == 1) {
-                lines[0].erase(lines[0].find_last_not_of(" \t\r\n") + 1); // Remove newline from the last line
-            } else if (lines.size() >= 2) {
-                lines[lines.size() - 2].erase(lines[lines.size() - 2].find_last_not_of(" \t\r\n") + 1); // Remove newline from the second-to-last line
-                lines[lines.size() - 1].clear(); // Clear the last line
-            } else {
-                std::cerr << "File has less than one line.\n";
-                return;
-            }
-
-            std::ofstream outputFile(filename, std::ios::trunc);
-
-            if (!outputFile.is_open()) {
-                std::cerr << "Unable to open the file for writing.\n";
-                return;
-            }
-
-            for (const auto& l : lines) {
-                outputFile << l << '\n';
-            }
-
-            outputFile.close();
+            outFile << contents;
+            outFile.close();
         }
         void decryptfile(string encryptedfile, string decryptedfile, string key)
         {

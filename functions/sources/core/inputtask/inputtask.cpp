@@ -50,7 +50,7 @@ namespace core {
         getline(cin,taskdetail);
         cout<<"Enter task tag: ";
         getline(cin,tasktag);
-        cout<<"Enter task date: ";
+        cout<<"Enter the date(dd/mm/yyyy): ";
         getline(cin,date);
         cout<<"Do you want to attach an attachment?(y/n): ";
         char attach;

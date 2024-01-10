@@ -14,7 +14,7 @@ class inputtask : virtual public Task,virtual public PathManager  // inherit fro
     protected:
 
     public:
-        inputtask():Task(),PathManager(){};
+        inputtask(): Task(), PathManager(){};
         int insert(void);
         void insertaskdata();
     };
