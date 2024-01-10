@@ -28,15 +28,6 @@ namespace core
     void Task::settasktag(string tag){
         tasktag=tag;
     }
-
-    std::string Task::gettaskdate()
-    {
-        return date;
-    }
-    void Task::settaskdate(string dt){
-        date=dt;
-    }
-
     std::string Task::getattachment()
     {
         return attachment;
@@ -319,8 +310,4 @@ namespace core
     {
        return taghandler::isimportant(tasktag);
     }
-    Task::~Task() {
-//        cout << "Destructor is called"<< endl;
-    }
 } // core
-

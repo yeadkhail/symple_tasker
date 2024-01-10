@@ -12,21 +12,23 @@ namespace core {
     private:
         string home;
         string symfolder;
-        string taskfile;
+         string taskfile;
         string tagfile;
         string encryptedtaskfile;
         string profilefile;
         string notesfolder;
+        string attachmentfolder;
     public:
         PathManager();
         //PathManager();
         string gethome();
         string getsymfolder();
-        string gettaskfile();
+         string gettaskfile();
         string getencryptedtaskfile();
         string gettagfile();
         string getprofilefile();
         string getnotesfolder();
+        string getattachmentfolder();
     };
 
 } // core

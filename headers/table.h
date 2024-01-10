@@ -8,19 +8,22 @@
 # include <fstream>
 # include <string>
 # include <cstring>
-#include <sstream>
-//#include <bits/stdc++.h>
+#include "Task.h"
+#include "PathManager.h"
+#include <iomanip>
 using namespace  std;
 namespace core {
     //using namespace std;
-   class table {
+   class table : virtual public PathManager
+   {
         public:
+        void modifyFilesForTable();
         void FilesForTable();
         void fileChangerForOutputTable();
         void finalFileChangerForOutputTable();
         void outputTable();
         void showTable();
-
+        void deleteFiles();
     };
 
 } // core

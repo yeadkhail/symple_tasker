@@ -9,9 +9,12 @@
 #include <termios.h>
 #include <unistd.h>
 #include "../functions/sources/crypto/aes128/aes128.cpp"
+#include <iostream>
+#include <fstream>
+
 namespace core {
 
-    class initializer: public PathManager
+    class initializer: virtual public PathManager
     {
     private:
         string name;
@@ -19,9 +22,11 @@ namespace core {
         string email;
         string address;
         string password;
+
+    public:
         class filenotcreated{};
         class couldntencrypterrr{};
-    public:
+        class couldntdecrypterrr{};
         void setname(string _name);
         void setphone(string _phone);
         void setemail(string _email);
@@ -49,7 +54,8 @@ namespace core {
         void initialize();
         void setprofilevalues();
         void initializetagfile();
-
+        void createencryptedtaskfile();
+        void initializeencryptedtaskfile();
     };
 
 } // core

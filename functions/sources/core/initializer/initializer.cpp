@@ -57,13 +57,18 @@ namespace core {
             tcsetattr(STDIN_FILENO, TCSANOW, &newt);
 
             // Read the password
+            if(cin.peek() == '\n')
+            {
+                cin.ignore();
+            }
             std::cin >> password;
 
             // Restore terminal settings
             tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
             std::cout << std::endl; // Move to the next line after password entry
+            return password;
         }
-     bool initializer::dotsymfolderchecker()
+        bool initializer::dotsymfolderchecker()
      {
          ifstream checker;
          checker.open(getsymfolder());
@@ -81,7 +86,8 @@ namespace core {
             createdotsymfolder();
             createprofilefile();
             createattachmentfolder();
-            createtaskfile();
+            //createtaskfile();
+            createencryptedtaskfile();
             createtagfile();
             createnotesfolder();
             //encrypttaskfile();
@@ -119,12 +125,26 @@ namespace core {
         void initializer::encrypttaskfile()
         {
             crypto::aes128 aes;
-            aes.encryptfile(gettaskfile(),getencryptedtaskfile(),password);
+            int tocheck = aes.encryptfile(gettaskfile(),getencryptedtaskfile(),password);
+            if(tocheck == -1)
+            {
+                throw couldntencrypterrr();
+            }
         }
         void initializer::decrypttaskfile()
         {
             crypto::aes128 aes;
+            cout << password<< endl;
             aes.decryptfile(getencryptedtaskfile(),gettaskfile(),password);
+//            if(!isproperlydecrypted())
+//            {
+//                throw couldntdecrypterrr();
+//            }
+        }
+        void initializer::createencryptedtaskfile()
+        {
+            string command = "touch " + getencryptedtaskfile();
+            system(command.c_str());
         }
         bool initializer::isencrypted()
         {
@@ -159,7 +179,7 @@ namespace core {
         {
             string part;
             getline(checker,part,'^');
-            if(isNumber(part))
+            if(part == "1")
             {
                 return true;
             }
@@ -173,6 +193,10 @@ namespace core {
         {
              ofstream profile;
              profile.open(getprofilefile());
+             if(!profile)
+             {
+                 throw filenotcreated();
+             }
                 profile << "Name: " << name << endl;
                 profile << "Phone Number: " << phone << endl;
                 profile << "Email: " << email << endl;
@@ -184,8 +208,12 @@ namespace core {
         {
             ofstream tagfile;
             tagfile.open(gettagfile());
+            if(!tagfile)
+            {
+                throw filenotcreated();
+            }
             tagfile << "1^important"<<endl;
-            tagfile << "2^not-important"<<endl;
+            tagfile << "0^not-important"<<endl;
             tagfile.close();
         }
         void initializer::initialize()
@@ -229,9 +257,7 @@ namespace core {
                     createdirstructure();
                     setprofilevalues();
                     initializetagfile();
-
-
-
+                    initializeencryptedtaskfile();
                 }
                 else
                 {
@@ -239,4 +265,20 @@ namespace core {
                     //cout<<"You have already initialized your symple tasker"<<endl;
                 }
             }
+        void initializer::initializeencryptedtaskfile()
+        {
+            enterpassword();
+            std::string mytempfile = gettaskfile();
+            ofstream tempfile(mytempfile);
+            tempfile << "1^ZGVtbw==^ZGVtbw==^bm90LWltcG9ydGFudA==^MDEvMDEvMjAwMA==^TlVMTA==";
+            tempfile.close();
+            crypto::aes128 myaes;
+            cout << password << endl;
+            cout << mytempfile << endl;
+            cout << getencryptedtaskfile() << endl;
+            myaes.encryptfile(mytempfile,getencryptedtaskfile(),password);
+            cout << "done" << endl;
+            remove(mytempfile.c_str());
+        }
+
 } // core

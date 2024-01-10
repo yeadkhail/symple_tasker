@@ -4,6 +4,7 @@
 
 #include "../../../../headers/inputtask.h"
 #include "../../../../headers/PathManager.h"
+#include "../../../../headers/attachment.h"
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -16,7 +17,8 @@ namespace core {
         if (!read.is_open())
         {
             cout << "Error while opening file" << endl;
-            exit(1);
+            //exit(1);
+            return -1;
         }
         int numLines = 0;
         std::string unused;
@@ -32,8 +34,8 @@ namespace core {
             cout << "Error appending to the file: " << filename << endl;
             return 0;
         }
-
-        app << insert << endl;
+        app << endl;
+        app << insert;
         app.close();
 
         return 0;
@@ -41,6 +43,7 @@ namespace core {
 
     void inputtask::insertaskdata()
     {
+        cin.ignore();
         cout<<"Enter task name: ";
         getline(cin,taskname);
         cout<<"Enter task detail: ";
@@ -62,6 +65,9 @@ namespace core {
 //            //cout << "hello" << endl;
 //            taskdata.attachment = destinationFilePath;
 //            //cout<< taskdata.attachment;
+                core::attachment myattachment;
+                myattachment.moveattachmenttoattachmentfolder();
+                attachment = myattachment.getattachmentname();
         }
         else
             attachment = "NULL";
