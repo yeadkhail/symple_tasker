@@ -3,6 +3,7 @@
 //
 
 #include <csignal>
+#include <unistd.h>
 #include "../../../../headers/attachment.h"
 
 namespace core {

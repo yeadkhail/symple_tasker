@@ -35,6 +35,13 @@ namespace core
     void Task::setattachment(string att){
         attachment=att;
     }
+    std::string Task::gettaskdate()
+    {
+        return date;
+    }
+    void Task::settaskdate(string dt){
+        date=dt;
+    }
     int Task::getdatedate()
     {
         istringstream issdate(date);

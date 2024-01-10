@@ -48,7 +48,7 @@ namespace core
         bool dateinputchecker(const string dateStr);
         bool isExpired();
         bool isimportant();
-        ~Task();
+        ~Task() {}
     };
 } // core
 
