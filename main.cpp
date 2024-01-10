@@ -8,6 +8,7 @@
 #include "headers/table.h"
 #include "headers/aes128.h"
 #include "headers/initializer.h"
+#include "headers/outputtask.h"
 
 using namespace std;
 
@@ -37,6 +38,14 @@ int main(int argc, char *argv[]) {
                 cout << "Enter your command >> ";
                 cin >> input;
             if(input == "insert"){core::inputtask myinput; myinput.insert();}
+            if(input== "showurgent"){core::outputtask myoutput; myoutput.showUrgent();}
+            if(input == "showimportant"){core::outputtask myoutput; myoutput.showImportant();}
+            if(input == "shownoturgent"){core::outputtask myoutput; myoutput.shownotUrgent();}
+            if(input == "shownotimportant"){core::outputtask myoutput; myoutput.shownotImportant();}
+            if(input == "showurgentimportant"){core::outputtask myoutput; myoutput.showUrgentImportant();}
+            if(input == "showurgentnotimportant"){core::outputtask myoutput; myoutput.showUrgentnotImportant();}
+            if(input == "shownoturgentimportant"){core::outputtask myoutput; myoutput.shownotUrgentImportant();}
+            if(input == "shownoturgentnotimportant"){core::outputtask myoutput; myoutput.shownotUrgentnotImportant();}
 //            else if(input == "edit-task") core::inputtask::TaskEdit();
 //            else if(input == "delete-task") core::inputtask::TaskDelete();
                 //else if(input == "update") updateTask();
@@ -70,6 +79,7 @@ int main(int argc, char *argv[]) {
             else if(input == "--version") core::Visuals::showversion();
 //            else if(input == "--randomizer") core::Visuals::randomizer();
             else if(input == "--clear") system("clear");
+            else if(input == "--cleanup") { core::initializer maininitializer; maininitializer.cleanup();}
             else cout << "Invalid command" << endl;
         }
 
