@@ -229,7 +229,7 @@ namespace core {
                     //cout <<endl;
                     cout << "Enter your phone number: ";
                     getline(cin,phone);
-                    cout << "Enter your emaili address:";
+                    cout << "Enter your email address:";
                     getline(cin,email);
                     //cout<< endl;
                     cout<< "Enter your address(In one line): ";
@@ -311,20 +311,33 @@ namespace core {
     }
     void initializer::cleanup()
     {
-        cout << "Cleaning up..." << endl;
-        remove(gettaskfile().c_str());
-        remove(getencryptedtaskfile().c_str());
-        remove(getprofilefile().c_str());
-        remove(gettagfile().c_str());
-        string command = "rm -rf " + getsymfolder() + "/attachments";
-        system(command.c_str());
-        command = "rm -rf " + getsymfolder() + "/notes";
-        system(command.c_str());
-        command = "rm -rf " + getsymfolder();
-        system(command.c_str());
-        cout << "Done" << endl;
-        cout << "Thank you for using Symple Tasker" << endl;
-        exit(0);
+          cout << "Are you sure you want to delete all your data? (y/n): ";
+            string input;
+            cin >> input;
+            if(input == "y")
+            {
+                cout << "Cleaning up..." << endl;
+                sleep(1);
+                remove(gettaskfile().c_str());
+                remove(getencryptedtaskfile().c_str());
+                remove(getprofilefile().c_str());
+                remove(gettagfile().c_str());
+                string command = "rm -rf " + getsymfolder() + "/attachments";
+                system(command.c_str());
+                command = "rm -rf " + getsymfolder() + "/notes";
+                system(command.c_str());
+                command = "rm -rf " + getsymfolder();
+                system(command.c_str());
+                cout << "Done" << endl;
+                cout << "Thank you for using Symple Tasker" << endl;
+                sleep(1);
+                system("clear");
+                exit(0);
+            }
+            else
+            {
+                return;
+            }
     }
     void initializer::exithandler()
     {
@@ -334,6 +347,7 @@ namespace core {
         encrypttaskfile();
         remove(gettaskfile().c_str());
         cout << "Exiting the program" << endl;
+        system("sleep 1");
         system("clear");
         exit(0);
     }
