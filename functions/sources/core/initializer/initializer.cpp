@@ -309,6 +309,34 @@ namespace core {
               password = _password;
           }
     }
+    void initializer::cleanup()
+    {
+        cout << "Cleaning up..." << endl;
+        remove(gettaskfile().c_str());
+        remove(getencryptedtaskfile().c_str());
+        remove(getprofilefile().c_str());
+        remove(gettagfile().c_str());
+        string command = "rm -rf " + getsymfolder() + "/attachments";
+        system(command.c_str());
+        command = "rm -rf " + getsymfolder() + "/notes";
+        system(command.c_str());
+        command = "rm -rf " + getsymfolder();
+        system(command.c_str());
+        cout << "Done" << endl;
+        cout << "Thank you for using Symple Tasker" << endl;
+        exit(0);
+    }
+    void initializer::exithandler()
+    {
+        system("sleep 1");
+        cout << "Encrypting your data" << endl;
+        system("sleep 1");
+        encrypttaskfile();
+        remove(gettaskfile().c_str());
+        cout << "Exiting the program" << endl;
+        system("clear");
+        exit(0);
+    }
 
 
 } // core

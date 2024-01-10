@@ -56,13 +56,7 @@ int main(int argc, char *argv[]) {
                     mytable.showTable();
                 } else if (input == "clear") system("clear");  //system("cls");
                 else if (input == "exit") {
-                    system("sleep 1");
-                    cout << "Encrypting your data" << endl;
-                    system("sleep 1");
-                    maininitializer.encrypttaskfile();
-                    cout << "Exiting the program" << endl;
-                    system("clear");
-                    exit(0);
+                    maininitializer.exithandler();
                 } else cout << "Invalid command" << endl;
                 if (input != "exit") {
                     goto start;

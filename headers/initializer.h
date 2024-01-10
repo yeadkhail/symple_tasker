@@ -57,6 +57,8 @@ namespace core {
         void createencryptedtaskfile();
         void initializeencryptedtaskfile();
         void passwordanalyzer(string password);
+        void  exithandler();
+        void cleanup();
     };
 
 } // core
