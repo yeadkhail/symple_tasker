@@ -29,6 +29,8 @@ int main(int argc, char *argv[]) {
 
                 maininitializer.enterpassword();
                 maininitializer.decrypttaskfile();
+                core::table mytable1;
+                //mytable1.showTable();
                 start:
                 //cin.ignore();
                 string input;
@@ -67,6 +69,23 @@ int main(int argc, char *argv[]) {
                 }
             }
         }
+        else if(argc == 2)
+        {
+            string input = argv[1];
+            if(input == "--help") core::Visuals::showhelp();
+            else if(input == "--version") core::Visuals::version();
+            else if(input == "--randomizer") core::Visuals::randomizer();
+            else if(input == "--history") core::Visuals::history();
+            else if(input == "--clear") system("clear");
+            else if(input == "--show-table") {
+                core::table mytable;
+                mytable.showTable();
+            }
+            else if(input == "--show-expired") core::Visuals::showExpired();
+            else if(input == "--show-attachment") core::Visuals::findAttachment();
+            else cout << "Invalid command" << endl;
+        }
+
     }
     catch (const std::exception &e) {
         std::cerr << e.what() << '\n';

@@ -105,4 +105,14 @@ namespace core {
         cout << "show-expired: Show expired tasks\n";
         cout << "show-table : Show the table again\n";
     }
+    void Visuals::showversion()
+    {
+        using namespace std;
+        cout<<"sym tasker "<<"(Symple Utilities) "<<"v0.0.1"<<endl;
+        cout<<"Copyright (C) 2023 Team Symple"<<endl;
+        cout<<"License GPLv3+: GNU version 3 or later <https://gnu.org/licences/gpl.html>."<<endl<<"This is a free software: You are free to change and redestribute it."<<endl;
+        cout<<"There is NO WARRANTY, to the extent permitted by law."<<endl<<endl;
+        cout<<"Written by Md Yead Khail Shovo, Zawad Bin Shoukat Tasin , Md Abdul Muqtadir and Faheem Rahman."<<endl;
+    }
+
 } // core

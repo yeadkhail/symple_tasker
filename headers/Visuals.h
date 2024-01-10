@@ -14,6 +14,7 @@ namespace core {
         static void motivation();
         static void showintro();
         static void showhelp();
+        static void showversion();
     };
 
 } // core
