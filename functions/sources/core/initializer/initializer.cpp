@@ -61,7 +61,9 @@ namespace core {
             {
                 cin.ignore();
             }
-            std::cin >> password;
+            string _password;
+            std::cin >> _password;
+            passwordanalyzer(_password);
 
             // Restore terminal settings
             tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
@@ -133,9 +135,9 @@ namespace core {
         }
         void initializer::decrypttaskfile()
         {
-            crypto::aes128 aes;
+            crypto::aes128 myaes;
             cout << password<< endl;
-            aes.decryptfile(getencryptedtaskfile(),gettaskfile(),password);
+            myaes.decryptfile(getencryptedtaskfile(),gettaskfile(),password);
 //            if(!isproperlydecrypted())
 //            {
 //                throw couldntdecrypterrr();
@@ -244,7 +246,9 @@ namespace core {
                     tcsetattr(STDIN_FILENO, TCSANOW, &newt);
 
                     // Read the password
-                    std::cin >> password;
+                    string _password;
+                    std::cin >> _password;
+                    passwordanalyzer(_password);
 
                     // Restore terminal settings
                     tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
@@ -267,18 +271,44 @@ namespace core {
             }
         void initializer::initializeencryptedtaskfile()
         {
-            enterpassword();
+            //enterpassword();
             std::string mytempfile = gettaskfile();
             ofstream tempfile(mytempfile);
-            tempfile << "1^ZGVtbw==^ZGVtbw==^bm90LWltcG9ydGFudA==^MDEvMDEvMjAwMA==^TlVMTA==";
+            string inputstring = "1^ZGVtbw==^ZGVtbw==^bm90LWltcG9ydGFudA==^MDEvMDEvMjAwMA==^TlVMTA==";
+            tempfile << inputstring << endl ;
             tempfile.close();
             crypto::aes128 myaes;
             cout << password << endl;
             cout << mytempfile << endl;
             cout << getencryptedtaskfile() << endl;
             myaes.encryptfile(mytempfile,getencryptedtaskfile(),password);
-            cout << "done" << endl;
             remove(mytempfile.c_str());
+            myaes.decryptfile(getencryptedtaskfile(),gettaskfile(),password);
+            cout << "done" << endl;
+
         }
+    void initializer::passwordanalyzer(string _password)
+    {
+          int len = _password.length();
+          //cout << "Password: " << len << endl;
+          if(len > 16)
+          {
+              password = _password.substr(0, 16);
+          }
+          else if(len<16)
+          {
+              password = _password;
+              for(int i = 16-len;i>0;i--)
+              {
+                  //cout<< "i: " << i << endl;
+                  password+='#';
+              }
+          }
+          else
+          {
+              password = _password;
+          }
+    }
+
 
 } // core

@@ -56,6 +56,7 @@ namespace core {
         void initializetagfile();
         void createencryptedtaskfile();
         void initializeencryptedtaskfile();
+        void passwordanalyzer(string password);
     };
 
 } // core

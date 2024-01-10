@@ -27,10 +27,10 @@ int main(int argc, char *argv[]) {
             } else {
                 //core::table::showTable();
 
-                //maininitializer.enterpassword();
+                maininitializer.enterpassword();
                 maininitializer.decrypttaskfile();
                 start:
-                cin.ignore();
+                //cin.ignore();
                 string input;
                 cout << "Enter your command >> ";
                 cin >> input;
@@ -165,6 +165,15 @@ int main(int argc, char *argv[]) {
 //    //cin >> password;
 //    remove(p.gettaskfile().c_str());
 //    //myaes.decryptfile(p.getencryptedtaskfile(),p.gettaskfile(),password);
+//    core::initializer myinitializer;
+//    myinitializer.enterpassword();
+//    myinitializer.decrypttaskfile();
+//    core::initializer maininitializer;
+//    if (!maininitializer.dotsymfolderchecker()) {
+//                maininitializer.initialize();
+//            }
+//    maininitializer.enterpassword();
+//    maininitializer.decrypttaskfile();
 //    core::initializer myinitializer;
 //    myinitializer.enterpassword();
 //    myinitializer.decrypttaskfile();
