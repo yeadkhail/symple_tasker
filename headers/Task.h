@@ -25,6 +25,7 @@ namespace core
         std::string tasktag;
         std::string date;
         std::string attachment;
+        std::string taskid;
     public:
         Task(){}
         Task(std::string line);
@@ -46,6 +47,7 @@ namespace core
         void settaskdate(string dt);
         void setattachment(string att);
         bool dateinputchecker(const string dateStr);
+        string gettaskid(){return taskid;}
         bool isExpired();
         bool isimportant();
         ~Task() {}

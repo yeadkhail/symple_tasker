@@ -228,6 +228,7 @@ namespace core
         std::istringstream iss(line); //1^ZGVtbw==^ZGVtbw==^bm90LWltcG9ydGFudA==^MDEvMDEvMjAwMA==^TlVMTA==
         std::string part;
         getline(iss, part, '^');
+        taskid = part;
         getline(iss, part, '^');
         taskname = crypto::base64::decode(part);
         getline(iss, part, '^');
