@@ -561,13 +561,12 @@ namespace crypto {
             file.close();
             file2.close();
             removeLastLine(decryptedfile);
-            removeLastLine(decryptedfile);
+//            removeLastLine(decryptedfile);
 //            ofstream file3;
 //            file3.open(decryptedfile,ios::app);
 //            file3<< '\n';
 //            file3.close();
         }
-
     };
 
 
