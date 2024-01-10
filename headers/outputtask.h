@@ -11,6 +11,8 @@ namespace core  {
         protected:
         public:
         outputtask() {}
+        void printHistory();
+        void showExpired();
         void showUrgent();
         void showImportant();
         void shownotUrgent();
@@ -19,7 +21,7 @@ namespace core  {
         void showUrgentnotImportant();
         void shownotUrgentImportant();
         void shownotUrgentnotImportant();
-//        ~outputtask();
+//        ~outputtask() {}
     };
 }//core
 

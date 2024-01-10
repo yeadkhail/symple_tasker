@@ -9,13 +9,19 @@ const int MAX_VALID_YR = 9999;
 const int MIN_VALID_YR = 1800;
 namespace core
 {
-    std::string Task::gettaskname() const{
+    std::string Task::gettaskid() {
+        return taskid;
+    }
+    void Task::settaskid(string id){
+        taskid=id;
+    }
+    std::string Task::gettaskname() {
         return taskname;
     }
     void Task::settaskname(const string name){
         taskname=name;
     }
-    std::string Task::gettaskdetail() const{
+    std::string Task::gettaskdetail() {
         return taskdetail;
     }
     void Task::settaskdetail(string detail){

@@ -16,6 +16,7 @@ namespace core {
     class tasktraverser : virtual public Task, virtual public taghandler,virtual public PathManager  // inherit from Task, taghandler,pathmanager
     {
     protected:
+        std::vector<string> _taskID;
         std::vector<string> _taskName;
         std::vector <string> _taskDetail;
         std::vector <string> _taskTag;
@@ -30,7 +31,6 @@ namespace core {
         std::string gettaskDate();
         std::string getAttachment();
         void findTask(int taskNum);
-        void printHistory();
         void findExpired();
         void findUrgent();
         void findImportant();

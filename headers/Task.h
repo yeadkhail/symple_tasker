@@ -30,8 +30,9 @@ namespace core
         Task(){}
         Task(std::string line);
         Task(string _taskname,string _taskdetail,string _tasktag, string _date,string _attachment);
-        std::string gettaskname() const;
-        std::string gettaskdetail()const;
+        std::string gettaskid();
+        std::string gettaskname();
+        std::string gettaskdetail();
         std::string gettasktag();
         std::string gettaskdate();
         std::string getattachment();
@@ -41,13 +42,13 @@ namespace core
         int getdateyear();
         bool isUrgent();
 
+        void settaskid(string id);
         void settaskname(string name);
         void settaskdetail(string detail);
         void settasktag(string tag);
         void settaskdate(string dt);
         void setattachment(string att);
         bool dateinputchecker(const string dateStr);
-        string gettaskid(){return taskid;}
         bool isExpired();
         bool isimportant();
         ~Task() {}

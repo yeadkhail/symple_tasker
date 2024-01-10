@@ -18,9 +18,9 @@ namespace core {
             cout << "Error while opening file" << endl;
             exit(1);
         }
-        // Discard the first two lines
+        // Discard the first line
         string discardLine;
-        for (int i = 0; i < 2; ++i) {
+        for (int i = 0; i < 1; ++i) {
             getline(read, discardLine);
         }
         string taskString;
@@ -32,6 +32,7 @@ namespace core {
             getline(iss, currentNum, '^');
                 taskNumber = stoi(currentNum);
                 if (taskNumber == taskNum) {
+                    cout << "Task ID: " << decoded.gettaskid() << endl;
                     cout << "Task name: " << decoded.gettaskname() << endl;
                     cout << "Task details: " << decoded.gettaskdetail() << endl;
                     cout << "Task tag: " << decoded.gettasktag()  << endl;
@@ -41,29 +42,6 @@ namespace core {
             }
         }
     }
-    void tasktraverser::printHistory(){ ///Done
-        string filename = gettaskfile();
-        ifstream read(filename);
-        if (!read.is_open())
-        {
-            cout << "Error while opening file" << endl;
-            exit(1);
-        }
-        // discard first two lines
-        string discardLine;
-        for (int i = 0; i < 2; ++i) {
-            getline(read, discardLine);
-        }
-        string taskString;
-        while (getline(read, taskString)) {
-            Task decoded(taskString);
-            cout << "Task name: " << decoded.gettaskname() << endl;
-            cout << "Task details: " << decoded.gettaskdetail() << endl;
-            cout << "Task tag: " << decoded.gettasktag()  << endl;
-            cout << "Date: " << decoded.gettaskdate() << endl;
-            cout << "Attachment: " << decoded.getattachment() << endl;
-        }
-    }
     void tasktraverser::findExpired(){ ///Done
         string filename = gettaskfile();
         ifstream read(filename);
@@ -71,9 +49,9 @@ namespace core {
             cout << "Error while opening file" << endl;
             exit(1);
         }
-        // for discarding first two lines
+        // Discard the first line
         string discardLine;
-        for (int i = 0; i < 2; ++i) {
+        for (int i = 0; i < 1; ++i) {
             getline(read, discardLine);
         }
 
@@ -81,11 +59,12 @@ namespace core {
         while (getline(read, taskString)) {
             Task decoded(taskString);
             if (decoded.isExpired()) {
-                cout << "Task name: " << decoded.gettaskname() << endl;
-                cout << "Task details: " << decoded.gettaskdetail() << endl;
-                cout << "Task tag: " << decoded.gettasktag()  << endl;
-                cout << "Date: " << decoded.gettaskdate() << endl;
-                cout << "Attachment: " << decoded.getattachment() << endl;
+                _taskID.push_back(decoded.gettaskid());
+                _taskName.push_back(decoded.gettaskname());
+                _taskDetail.push_back(decoded.gettaskdetail());
+                _taskTag.push_back(decoded.gettasktag());
+                _taskDate.push_back(decoded.gettaskdate());
+                _taskAttachment.push_back(decoded.getattachment());
             } else {
                 continue;
             }
@@ -98,9 +77,9 @@ namespace core {
             cout << "Error while opening file" << endl;
             exit(1);
         }
-        // for discarding first two lines
+        // Discard the first line
         string discardLine;
-        for (int i = 0; i < 2; ++i) {
+        for (int i = 0; i < 1; ++i) {
             getline(read, discardLine);
         }
 
@@ -108,6 +87,7 @@ namespace core {
         while (getline(read, taskString)) {
             Task decoded(taskString);
             if (decoded.isUrgent()) {
+                _taskID.push_back(decoded.gettaskid());
                 _taskName.push_back(decoded.gettaskname());
                 _taskDetail.push_back(decoded.gettaskdetail());
                 _taskTag.push_back(decoded.gettasktag());
@@ -125,15 +105,16 @@ namespace core {
             cout << "Error while opening file" << endl;
             exit(1);
         }
-        // for discarding first two lines
+        // Discard the first line
         string discardLine;
-        for (int i = 0; i < 2; ++i) {
+        for (int i = 0; i < 1; ++i) {
             getline(read, discardLine);
         }
         string taskString;
         while (getline(read, taskString)) {
             Task decoded(taskString);
             if (taghandler::isimportant(decoded.gettasktag())) {
+                _taskID.push_back(decoded.gettaskid());
                 _taskName.push_back(decoded.gettaskname());
                 _taskDetail.push_back(decoded.gettaskdetail());
                 _taskTag.push_back(decoded.gettasktag());
@@ -151,15 +132,16 @@ namespace core {
             cout << "Error while opening file" << endl;
             exit(1);
         }
-        // for discarding first two lines
+        // Discard the first line
         string discardLine;
-        for (int i = 0; i < 2; ++i) {
+        for (int i = 0; i < 1; ++i) {
             getline(read, discardLine);
         }
         string taskString;
         while (getline(read, taskString)) {
             Task decoded(taskString);
             if (!decoded.isUrgent()) {
+                _taskID.push_back(decoded.gettaskid());
                 _taskName.push_back(decoded.gettaskname());
                 _taskDetail.push_back(decoded.gettaskdetail());
                 _taskTag.push_back(decoded.gettasktag());
@@ -177,15 +159,16 @@ namespace core {
             cout << "Error while opening file" << endl;
             exit(1);
         }
-        // for discarding first two lines
+        // Discard the first line
         string discardLine;
-        for (int i = 0; i < 2; ++i) {
+        for (int i = 0; i < 1; ++i) {
             getline(read, discardLine);
         }
         string taskString;
         while (getline(read, taskString)) {
             Task decoded(taskString);
             if (!taghandler::isimportant(decoded.gettasktag())) {
+                _taskID.push_back(decoded.gettaskid());
                 _taskName.push_back(decoded.gettaskname());
                 _taskDetail.push_back(decoded.gettaskdetail());
                 _taskTag.push_back(decoded.gettasktag());
@@ -203,15 +186,16 @@ namespace core {
             cout << "Error while opening file" << endl;
             exit(1);
         }
-        // for discarding first two lines
+        // Discard the first line
         string discardLine;
-        for (int i = 0; i < 2; ++i) {
+        for (int i = 0; i < 1; ++i) {
             getline(read, discardLine);
         }
         string taskString;
         while (getline(read, taskString)) {
             Task decoded(taskString);
             if (decoded.isUrgent() && taghandler::isimportant(decoded.gettasktag())) {
+                _taskID.push_back(decoded.gettaskid());
                 _taskName.push_back(decoded.gettaskname());
                 _taskDetail.push_back(decoded.gettaskdetail());
                 _taskTag.push_back(decoded.gettasktag());
@@ -229,15 +213,16 @@ namespace core {
             cout << "Error while opening file" << endl;
             exit(1);
         }
-        // for discarding first two lines
+        // Discard the first line
         string discardLine;
-        for (int i = 0; i < 2; ++i) {
+        for (int i = 0; i < 1; ++i) {
             getline(read, discardLine);
         }
         string taskString;
         while (getline(read, taskString)) {
             Task decoded(taskString);
             if (!decoded.isUrgent() && taghandler::isimportant(decoded.gettasktag())) {
+                _taskID.push_back(decoded.gettaskid());
                 _taskName.push_back(decoded.gettaskname());
                 _taskDetail.push_back(decoded.gettaskdetail());
                 _taskTag.push_back(decoded.gettasktag());
@@ -255,15 +240,16 @@ namespace core {
             cout << "Error while opening file" << endl;
             exit(1);
         }
-        // for discarding first two lines
+        // Discard the first line
         string discardLine;
-        for (int i = 0; i < 2; ++i) {
+        for (int i = 0; i < 1; ++i) {
             getline(read, discardLine);
         }
         string taskString;
         while (getline(read, taskString)) {
             Task decoded(taskString);
-            if (!decoded.isUrgent() && !taghandler::isimportant(decoded.gettasktag())) {
+            if (!decoded.isExpired() && !decoded.isUrgent() && !taghandler::isimportant(decoded.gettasktag())) {
+                _taskID.push_back(decoded.gettaskid());
                 _taskName.push_back(decoded.gettaskname());
                 _taskDetail.push_back(decoded.gettaskdetail());
                 _taskTag.push_back(decoded.gettasktag());
@@ -281,15 +267,16 @@ namespace core {
             cout << "Error while opening file" << endl;
             exit(1);
         }
-        // for discarding first two lines
+        // Discard the first line
         string discardLine;
-        for (int i = 0; i < 2; ++i) {
+        for (int i = 0; i < 1; ++i) {
             getline(read, discardLine);
         }
         string taskString;
         while (getline(read, taskString)) {
             Task decoded(taskString);
             if (decoded.isUrgent() && !taghandler::isimportant(decoded.gettasktag())) {
+                _taskID.push_back(decoded.gettaskid());
                 _taskName.push_back(decoded.gettaskname());
                 _taskDetail.push_back(decoded.gettaskdetail());
                 _taskTag.push_back(decoded.gettasktag());
