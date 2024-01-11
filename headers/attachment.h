@@ -25,8 +25,10 @@ namespace core {
         string getattachmentname();
         int moveattachmenttoattachmentfolder();
         int moveattachmenttocurrentfolder();
+        int moveattachmenttocurrentfolder(string _attachmentname);
         string getFileName(const string& filePath);
         bool copyFile(const string& sourceFilePath, const string& destinationFolderPath);
+        void showattachment();
     };
 
 } // core
