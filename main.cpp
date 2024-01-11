@@ -27,12 +27,10 @@ int main(int argc, char *argv[]) {
                 maininitializer.initialize();
                 goto begin;
             } else {
-                //core::table::showTable();
-
                 maininitializer.enterpassword();
                 maininitializer.decrypttaskfile();
                 core::table mytable1;
-                //mytable1.showTable();
+                mytable1.showTable();
                 start:
                 //cin.ignore();
                 string input;
@@ -51,20 +49,9 @@ int main(int argc, char *argv[]) {
             else if(input == "showurgentnotimportant"){core::outputtask myoutput; myoutput.showUrgentnotImportant();}
             else if(input == "shownoturgentimportant"){core::outputtask myoutput; myoutput.shownotUrgentImportant();}
             else if(input == "shownoturgentnotimportant"){core::outputtask myoutput; myoutput.shownotUrgentnotImportant();}
-//          else if(input == "edit-task") core::inputtask::TaskEdit();
-//          else if(input == "delete-task") core::inputtask::TaskDelete();
-//          else if(input == "update") updateTask();
-//          else if(input == "show") showTask();
             else if (input == "help") core::Visuals::showhelp();
             else if(input == "version") core::Visuals::showversion();
             else if(input == "randomizer") core::Visuals::randomiser();
-//          else if(input == "edit-tag") core::taghandler::TagEdit();
-//          else if(input =="delete-tag") core::taghandler::TagDelete();
-//          else if(input == "insert-tag") core::taghandler::TagInsert();
-//          else if(input == "search-tagwise") core::taghandler::TagWise();
-
-//          else if(input == "show-expired") core::Visuals::showExpired();
-//          else if(input == "history") core::Visuals::history();
             else if (input == "show-table") {core::table mytable;mytable.showTable();}
             else if (input == "clear") system("clear");  //system("cls");
             else if (input == "exit") {maininitializer.exithandler();}

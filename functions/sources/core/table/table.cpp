@@ -57,7 +57,7 @@ namespace core
             core::Task mytask(lineee);
             std::string taskName = mytask.gettaskname();
 
-            if (mytask.isUrgent() && mytask.isimportant() && !mytask.isExpired())
+            if (mytask.isUrgent() && mytask.isimportant())
             {
                 count1++;
                 outputFile11 << count1 << ". " << taskName << std::endl;
@@ -68,7 +68,7 @@ namespace core
                 outputFile12 << count2 << ". " << taskName << std::endl;
 
             }
-            else if (mytask.isUrgent() && !mytask.isimportant() && !mytask.isExpired())
+            else if (mytask.isUrgent() && !mytask.isimportant())
             {
                 count3++;
                 outputFile13 << count3 << ". " << taskName << std::endl;
