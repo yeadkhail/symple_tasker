@@ -10,6 +10,7 @@
 #include "headers/initializer.h"
 #include "headers/outputtask.h"
 #include "headers/attachment.h"
+#include "headers/inputhandler.h"
 
 using namespace std;
 
@@ -50,8 +51,8 @@ int main(int argc, char *argv[]) {
             else if(input == "showurgentnotimportant"){core::outputtask myoutput; myoutput.showUrgentnotImportant();}
             else if(input == "shownoturgentimportant"){core::outputtask myoutput; myoutput.shownotUrgentImportant();}
             else if(input == "shownoturgentnotimportant"){core::outputtask myoutput; myoutput.shownotUrgentnotImportant();}
-//          else if(input == "edit-task") core::inputtask::TaskEdit();
-//          else if(input == "delete-task") core::inputtask::TaskDelete();
+            else if(input == "edit-task") { core::inputhandler myoutput; myoutput.editTask();}
+            else if(input == "delete-task") { core::inputhandler myoutput; myoutput.deleteTask();}
 //          else if(input == "update") updateTask();
 //          else if(input == "show") showTask();
             else if (input == "help") core::Visuals::showhelp();
