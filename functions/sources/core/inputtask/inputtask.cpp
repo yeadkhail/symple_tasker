@@ -50,8 +50,32 @@ namespace core {
         getline(cin,taskdetail);
         cout<<"Enter task tag: ";
         getline(cin,tasktag);
+        enterdate:
         cout<<"Enter the date(dd/mm/yyyy): ";
-        getline(cin,date);
+        string _date;
+        if(cin.peek() == '\n')
+            cin.ignore();
+        getline(cin,_date);
+        bool datevalid = isValidDateFormat(_date);
+        if(!datevalid)
+        {
+
+                cout << "Invalid date" << endl;
+                cout << "Do you want to enter the date again?(y/n): ";
+                char choice;
+                //cin.ignore();
+                cin >> choice;
+                if (choice == 'y')
+                    goto enterdate;
+                else {
+                    cout << "Task not inserted" << endl;
+                    return;
+                }
+        }
+        else
+        {
+            date = _date;
+        }
         cout<<"Do you want to attach an attachment?(y/n): ";
         char attach;
         cin >> attach;

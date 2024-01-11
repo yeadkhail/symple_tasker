@@ -37,6 +37,7 @@ namespace core
         std::string gettaskdate();
         std::string getattachment();
         string packtask();
+        string packtaskforinputhandler();
         int getdatedate();
         int getdatemonth();
         int getdateyear();
@@ -51,6 +52,7 @@ namespace core
         bool dateinputchecker(const string dateStr);
         bool isExpired();
         bool isimportant();
+        bool isValidDateFormat(const std::string& inputString);
         ~Task() {}
     };
 } // core

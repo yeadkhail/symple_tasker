@@ -42,7 +42,8 @@ int main(int argc, char *argv[]) {
             else if(input == "insert-tag"){core::taghandler mytaghandler; mytaghandler.inputtag();}
             else if(input == "show-attachment") {core::attachment myattachment; myattachment.showattachment();}
             else if(input == "history") {core::outputtask myoutput; myoutput.printHistory();}
-            else if(input== "showurgent"){core::outputtask myoutput; myoutput.showUrgent();}
+            else if(input == "showexpired") {core::outputtask myoutput; myoutput.showExpired();}
+            else if(input == "showurgent"){core::outputtask myoutput; myoutput.showUrgent();}
             else if(input == "showimportant"){core::outputtask myoutput; myoutput.showImportant();}
             else if(input == "shownoturgent"){core::outputtask myoutput; myoutput.shownotUrgent();}
             else if(input == "shownotimportant"){core::outputtask myoutput; myoutput.shownotImportant();}
@@ -57,20 +58,20 @@ int main(int argc, char *argv[]) {
             else if (input == "help") core::Visuals::showhelp();
             else if(input == "version") core::Visuals::showversion();
             else if(input == "randomizer") core::Visuals::randomiser();
-//            else if(input == "edit-tag") core::taghandler::TagEdit();
-//            else if(input =="delete-tag") core::taghandler::TagDelete();
-//            else if(input == "insert-tag") core::taghandler::TagInsert();
-//            else if(input == "search-tagwise") core::taghandler::TagWise();
+//          else if(input == "edit-tag") core::taghandler::TagEdit();
+//          else if(input =="delete-tag") core::taghandler::TagDelete();
+//          else if(input == "insert-tag") core::taghandler::TagInsert();
+//          else if(input == "search-tagwise") core::taghandler::TagWise();
 
-//            else if(input == "show-expired") core::Visuals::showExpired();
-//            else if(input == "history") core::Visuals::history();
+//          else if(input == "show-expired") core::Visuals::showExpired();
+//          else if(input == "history") core::Visuals::history();
             else if (input == "show-table") {core::table mytable;mytable.showTable();}
-                else if (input == "clear") system("clear");  //system("cls");
-                else if (input == "exit") {maininitializer.exithandler();}
-                else cout << "Invalid command" << endl;
-                if (input != "exit") {
-                    goto start;
-                }
+            else if (input == "clear") system("clear");  //system("cls");
+            else if (input == "exit") {maininitializer.exithandler();}
+            else cout << "Invalid command" << endl;
+            if (input != "exit") {
+                goto start;
+            }
             }
         }
         else if(argc == 2)
@@ -83,7 +84,6 @@ int main(int argc, char *argv[]) {
             else if(input == "--cleanup") { core::initializer maininitializer; maininitializer.cleanup();}
             else cout << "Invalid command" << endl;
         }
-
     }
     catch (const std::exception &e) {
         std::cerr << e.what() << '\n';
