@@ -56,7 +56,7 @@ int main(int argc, char *argv[]) {
 //          else if(input == "show") showTask();
             else if (input == "help") core::Visuals::showhelp();
             else if(input == "version") core::Visuals::showversion();
-//            else if(input == "randomizer") core::Visuals::randomizer();
+            else if(input == "randomizer") core::Visuals::randomiser();
 //            else if(input == "edit-tag") core::taghandler::TagEdit();
 //            else if(input =="delete-tag") core::taghandler::TagDelete();
 //            else if(input == "insert-tag") core::taghandler::TagInsert();

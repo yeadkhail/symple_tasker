@@ -15,6 +15,7 @@ namespace core {
         static void showintro();
         static void showhelp();
         static void showversion();
+        static  void randomiser();
     };
 
 } // core

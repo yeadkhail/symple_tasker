@@ -57,8 +57,7 @@ namespace core
             core::Task mytask(lineee);
             std::string taskName = mytask.gettaskname();
 
-            if (mytask.isUrgent() && mytask.isimportant() &&
-            !mytask.isExpired())
+            if (mytask.isUrgent() && mytask.isimportant() && !mytask.isExpired())
             {
                 count1++;
                 outputFile11 << count1 << ". " << taskName << std::endl;
@@ -67,19 +66,32 @@ namespace core
             {
                 count2++;
                 outputFile12 << count2 << ". " << taskName << std::endl;
+
             }
             else if (mytask.isUrgent() && !mytask.isimportant() && !mytask.isExpired())
             {
                 count3++;
                 outputFile13 << count3 << ". " << taskName << std::endl;
+
             }
             else if (!mytask.isUrgent() && !mytask.isimportant() && !mytask.isExpired())
             {
                 count4++;
                 outputFile14 << count4 << ". " << taskName << std::endl;
+
             }
         }
+
+        outputFile11.close();
+        outputFile12.close();
+        outputFile13.close();
+        outputFile14.close();
+
+
+
     }
+
+
 
 
     void table::FilesForTable()
@@ -466,6 +478,8 @@ namespace core
                 std::cerr << "Error deleting the file " << fileName << ".\n";
             }
         }
+
+
     }
     void table::showTable()
     {
