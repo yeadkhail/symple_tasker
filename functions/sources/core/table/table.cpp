@@ -9,20 +9,15 @@ using namespace std;
 
 namespace core
 {
-    void table::modifyFilesForTable()
-    {
+    void table::modifyFilesForTable() {
         // Close and clear contents of existing files
-        for (int i = 1; i <= 4; ++i)
-        {
+        for (int i = 1; i <= 4; ++i) {
             string fileName = "data" + to_string(i) + ".txt";
             ofstream outputFile(fileName);
 
-            if (outputFile.is_open())
-            {
+            if (outputFile.is_open()) {
                 outputFile.close();
-            }
-            else
-            {
+            } else {
                 cerr << "Error creating/clearing the file " << fileName << ".\n";
             }
         }
@@ -34,8 +29,7 @@ namespace core
         ofstream outputFile14("data4.txt");
 
         // Check if files are successfully opened
-        if (!outputFile11.is_open() || !outputFile12.is_open() || !outputFile13.is_open() || !outputFile14.is_open())
-        {
+        if (!outputFile11.is_open() || !outputFile12.is_open() || !outputFile13.is_open() || !outputFile14.is_open()) {
             cerr << "Error opening one or more output files.\n";
             return;
         }
@@ -43,8 +37,7 @@ namespace core
         string taskfile = PathManager::gettaskfile();
         ifstream workfile(taskfile);
 
-        if (!workfile.is_open())
-        {
+        if (!workfile.is_open()) {
             cerr << "Error opening the task file " << taskfile << ".\n";
             return;
         }
@@ -52,30 +45,22 @@ namespace core
         string lineee;
         int count1 = 0, count2 = 0, count3 = 0, count4 = 0;
 
-        while (getline(workfile, lineee))
-        {
+        while (getline(workfile, lineee)) {
             core::Task mytask(lineee);
             std::string taskName = mytask.gettaskname();
 
-            if (mytask.isUrgent() && mytask.isimportant())
-            {
+            if (mytask.isUrgent() && mytask.isimportant()) {
                 count1++;
                 outputFile11 << count1 << ". " << taskName << std::endl;
-            }
-            else if (!mytask.isUrgent() && mytask.isimportant() && !mytask.isExpired())
-            {
+            } else if (!mytask.isUrgent() && mytask.isimportant() && !mytask.isExpired()) {
                 count2++;
                 outputFile12 << count2 << ". " << taskName << std::endl;
 
-            }
-            else if (mytask.isUrgent() && !mytask.isimportant())
-            {
+            } else if (mytask.isUrgent() && !mytask.isimportant()) {
                 count3++;
                 outputFile13 << count3 << ". " << taskName << std::endl;
 
-            }
-            else if (!mytask.isUrgent() && !mytask.isimportant() && !mytask.isExpired())
-            {
+            } else if (!mytask.isUrgent() && !mytask.isimportant() && !mytask.isExpired()) {
                 count4++;
                 outputFile14 << count4 << ". " << taskName << std::endl;
 
@@ -87,11 +72,7 @@ namespace core
         outputFile13.close();
         outputFile14.close();
 
-
-
     }
-
-
 
 
     void table::FilesForTable()
@@ -117,8 +98,8 @@ namespace core
         {
             if (line.length() > 30)
             {
-                string firstPart = line.substr(0, 29);
-                string secondPart = line.substr(29);
+                string firstPart = line.substr(0, 27);
+                string secondPart = line.substr(27);
                 outputFile << firstPart << '-' << endl
                            << secondPart << endl;
             }
@@ -150,8 +131,8 @@ namespace core
         {
             if (line.length() > 30)
             {
-                string firstPart = line.substr(0, 29);
-                string secondPart = line.substr(29);
+                string firstPart = line.substr(0, 27);
+                string secondPart = line.substr(27);
                 outputFile2 << firstPart << endl
                             << secondPart << endl;
             }
@@ -185,8 +166,8 @@ namespace core
         {
             if (line.length() > 30)
             {
-                string firstPart = line.substr(0, 29);
-                string secondPart = line.substr(29);
+                string firstPart = line.substr(0, 27);
+                string secondPart = line.substr(27);
                 outputFile3 << firstPart << "-" << endl
                             << secondPart << " " << endl;
             }
@@ -220,8 +201,8 @@ namespace core
         {
             if (line.length() > 30)
             {
-                string firstPart = line.substr(0, 29);
-                string secondPart = line.substr(29);
+                string firstPart = line.substr(0, 27);
+                string secondPart = line.substr(27);
                 outputFile4 << firstPart << '-' << endl
                             << secondPart << " " << endl;
             }
@@ -234,17 +215,14 @@ namespace core
         inputFile4.close();
         outputFile4.close();
 
-        return;
-    }
 
-    void table::fileChangerForOutputTable()
-    {
-        return;
+
+
+
     }
 
     void table::finalFileChangerForOutputTable()
     {
-
         ifstream file1("d1.txt");
         ifstream file2("d2.txt");
         ofstream outputFile("d5.txt");
@@ -268,56 +246,63 @@ namespace core
         }
 
         string line1, line2;
-        while ((getline(file1, line1)) && getline(file2, line2))
+        while (getline(file1, line1) && getline(file2, line2))
         {
+
             string concat = "";
-            for (int i = 0; i < line1.length(); i++)
+
+
+            for (int i = 0; i < line1.length() ; i++)
             {
                 concat += line1[i];
             }
             concat += " ~";
 
-            for (int i = 0; i < line2.length(); i++)
+            for (int i = 0; i < line2.length() ; i++)
             {
                 concat += line2[i];
             }
             concat += " ~";
             outputFile << concat << endl;
+
         }
 
         while (getline(file1, line1))
         {
             string concat = "";
 
-            for (int i = 0; i < line1.length(); i++)
+
+            for (int i = 0; i < line1.length() ; i++)
             {
                 concat += line1[i];
             }
             concat += " ~";
 
-            for (int i = 0; i < line1.length(); i++)
+            for (int i = 0; i < line1.length() ; i++)
             {
                 concat += " ";
             }
             concat += " ~";
             outputFile << concat << endl;
+
         }
 
         while (getline(file2, line2))
         {
 
             string concat = "";
-            for (int i = 0; i < line2.length(); i++)
+            for (int i = 0; i < line2.length() ; i++)
             {
                 concat += " ";
             }
             concat += " ~";
-            for (int i = 0; i < line2.length(); i++)
+            for (int i = 0; i < line2.length() ; i++)
             {
                 concat += line2[i];
             }
             concat += " ~";
             outputFile << concat << endl;
+
         }
         file1.close();
         file2.close();
@@ -330,19 +315,19 @@ namespace core
         if (!file3.is_open())
         {
             cout << "Unable to open d3.txt" << endl;
-            return;
+
         }
 
         if (!file4.is_open())
         {
             cout << "Unable to open d4.txt" << endl;
-            return;
+
         }
 
         if (!outputFile2.is_open())
         {
             cout << "Unable to open d6.txt" << endl;
-            return;
+
         }
 
         string line3, line4;
@@ -367,12 +352,12 @@ namespace core
             int length1 = line3.length();
             string concat = "";
 
-            for (int i = 0; i < line3.length(); i++)
+            for (int i = 0; i < line3.length() ; i++)
             {
                 concat += line3[i];
             }
             concat += '~';
-            for (int i = 0; i < line3.length(); i++)
+            for (int i = 0; i < line3.length() ; i++)
             {
                 concat += " ";
             }
@@ -401,8 +386,10 @@ namespace core
         file4.close();
         outputFile2.close();
 
-        return;
+        return ;
     }
+
+
 
     void table::outputTable()
     {
@@ -466,29 +453,34 @@ namespace core
         }
         cout << string(86, '=') << endl;
         fin.close();
-        return;
-    }
-    void table::deleteFiles()
-    {
-        for (int i = 1; i <= 4; ++i) {
-            std::string fileName = "data" + std::to_string(i) + ".txt";
-            if (std::remove(fileName.c_str()) == 0) {
-                continue;
-            } else {
-                std::cerr << "Error deleting the file " << fileName << ".\n";
-            }
-        }
+        fin2.close();
 
 
+
+//        remove("data1.txt");
+//        remove("data2.txt");
+//        remove("data3.txt");
+//        remove("data4.txt");
+//        remove("d1.txt");
+//        remove("d2.txt");
+//        remove("d3.txt");
+//        remove("d4.txt");
+//        remove("d5.txt");
+//        remove("d6.txt");
+
+
+
+
+
     }
+
     void table::showTable()
     {
         modifyFilesForTable();
         FilesForTable();
-        fileChangerForOutputTable();
         finalFileChangerForOutputTable();
         outputTable();
-        deleteFiles();
+
         return;
     }
 } // core
