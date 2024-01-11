@@ -28,6 +28,7 @@ namespace core{
             cout << "Task tag: " << decoded.gettasktag()  << endl;
             cout << "Date: " << decoded.gettaskdate() << endl;
             cout << "Attachment: " << decoded.getattachment() << endl;
+            cout << "--------------------------" << endl;
         }
     }
     void outputtask::showExpired() { ///Done
