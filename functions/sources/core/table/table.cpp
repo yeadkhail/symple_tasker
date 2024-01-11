@@ -6,9 +6,15 @@
 #include "../../../../headers/PathManager.h"
 #include "../../../../headers/Task.h"
 using namespace std;
-
+int max1=0;
+int max2=0;
+int c1=0;
+int c2=0;
+int c3=0;
+int c4=0;
 namespace core
 {
+
     void table::modifyFilesForTable() {
         // Close and clear contents of existing files
         for (int i = 1; i <= 4; ++i) {
@@ -75,36 +81,34 @@ namespace core
     }
 
 
-    void table::FilesForTable()
-    {
+    void table::FilesForTable() {
         ifstream inputFile("data1.txt");
 
-        if (!inputFile)
-        {
+        if (!inputFile) {
             cout << "Failed to open the file." << endl;
             return;
         }
 
         ofstream outputFile("d1.txt");
 
-        if (!outputFile)
-        {
+        if (!outputFile) {
             cout << "Failed to create the output file." << endl;
             return;
         }
-
+        c1 = 0;
         string line;
-        while (getline(inputFile, line))
-        {
-            if (line.length() > 30)
-            {
+        while (getline(inputFile, line)) {
+            if (line.length() > 30) {
+                c1++;
                 string firstPart = line.substr(0, 27);
                 string secondPart = line.substr(27);
+                if (secondPart.length() != 0) {
+                    c1++;
+                }
                 outputFile << firstPart << '-' << endl
                            << secondPart << endl;
-            }
-            else
-            {
+            } else {
+                c1++;
                 outputFile << line << endl;
             }
         }
@@ -113,32 +117,32 @@ namespace core
 
         ifstream inputFile2("data2.txt");
 
-        if (!inputFile2)
-        {
+        if (!inputFile2) {
             cout << "Failed to open the file." << endl;
             return;
         }
 
         ofstream outputFile2("d2.txt");
 
-        if (!outputFile2)
-        {
+        if (!outputFile2) {
             cout << "Failed to create the output file." << std::endl;
             return;
         }
 
-        while (getline(inputFile2, line))
-        {
-            if (line.length() > 30)
-            {
+        c2 = 0;
+        while (getline(inputFile2, line)) {
+            if (line.length() > 30) {
+                c2++;
                 string firstPart = line.substr(0, 27);
+
                 string secondPart = line.substr(27);
+                if (secondPart.length() != 0) {
+                    c2++;
+                }
                 outputFile2 << firstPart << endl
                             << secondPart << endl;
-            }
-            else
-            {
-
+            } else {
+                c2++;
                 outputFile2 << line << endl;
             }
         }
@@ -148,32 +152,30 @@ namespace core
 
         ifstream inputFile3("data3.txt");
 
-        if (!inputFile3)
-        {
+        if (!inputFile3) {
             cout << "Failed to open the file." << endl;
             return;
         }
 
         ofstream outputFile3("d3.txt");
 
-        if (!outputFile3)
-        {
+        if (!outputFile3) {
             cerr << "Failed to create the output file." << endl;
             return;
         }
-
-        while (getline(inputFile3, line))
-        {
-            if (line.length() > 30)
-            {
+        c3 = 0;
+        while (getline(inputFile3, line)) {
+            if (line.length() > 30) {
+                c3++;
                 string firstPart = line.substr(0, 27);
                 string secondPart = line.substr(27);
+                if (secondPart.length() != 0) {
+                    c3++;
+                }
                 outputFile3 << firstPart << "-" << endl
                             << secondPart << " " << endl;
-            }
-            else
-            {
-
+            } else {
+                c3++;
                 outputFile3 << line << endl;
             }
         }
@@ -183,44 +185,206 @@ namespace core
 
         ifstream inputFile4("data4.txt");
 
-        if (!inputFile4)
-        {
+        if (!inputFile4) {
             cerr << "Failed to open the file." << endl;
             return;
         }
 
         ofstream outputFile4("d4.txt");
 
-        if (!outputFile4)
-        {
+        if (!outputFile4) {
             cerr << "Failed to create the output file." << endl;
             return;
         }
-
-        while (getline(inputFile4, line))
-        {
-            if (line.length() > 30)
-            {
+        c4 = 0;
+        while (getline(inputFile4, line)) {
+            if (line.length() > 30) {
+                c4++;
                 string firstPart = line.substr(0, 27);
                 string secondPart = line.substr(27);
+                if (secondPart.length() != 0) {
+                    c4++;
+                }
                 outputFile4 << firstPart << '-' << endl
                             << secondPart << " " << endl;
-            }
-            else
-            {
+            } else {
+                c4++;
                 outputFile4 << line << endl;
             }
         }
 
         inputFile4.close();
         outputFile4.close();
+//        ofstream inFile1("d1.txt");
+//        ofstream inFile2("d2.txt");
+//        ofstream inFile3("d3.txt");
+//        ofstream inFile4("d4.txt");
+       max1 = max(c1, c2);
+       max2 = max(c3, c4);
+//        if (c1 < max1)
+//        {
+//            inFile1<<"   "<<endl;
+//        }
+//        else if (c2 < max1)
+//        {
+//            inFile2<<"   "<<endl;
+//        }
+//
+//        if (c3 < max2)
+//        {
+//            inFile3<<"   "<<endl;
+//        }
+//       else if (c4 < max1)
+//        {
+//            inFile4<<"   "<<endl;
+//        }
+//
+//
+//
+//    inFile1.close();
+//    inFile2.close();
+//    inFile3.close();
+//    inFile4.close();
 
 
 
 
 
-    }
-
+    };
+//    void  table::fileChangerForOutputTable() {
+//        ifstream inputFile("data1.txt");
+//
+//        if (!inputFile) {
+//            cout << "Failed to open the file." << endl;
+//            return ;
+//        }
+//
+//        ofstream outputFile("d1.txt");
+//
+//        if (!outputFile) {
+//            cout << "Failed to create the output file." << endl;
+//            return ;
+//        }
+//
+//        string line;
+//        while (getline(inputFile, line)) {
+//            if (line.length() > 30) {
+//                string firstPart = line.substr(0, 29);
+//                string secondPart = line.substr(29);
+//                outputFile << firstPart << '-' << endl << secondPart << endl;
+//            } else {
+//                if (line.length() == 1)
+//                    outputFile << line << " " << endl;
+//                else {
+//                    outputFile << line << endl;
+//                }
+//            }
+//
+//        }
+//        inputFile.close();
+//        outputFile.close();
+//
+//        ifstream inputFile2("data2.txt");
+//
+//        if (!inputFile2) {
+//            std::cout << "Failed to open the file." << endl;
+//            return ;
+//        }
+//
+//        ofstream outputFile2("d2.txt");
+//
+//        if (!outputFile2) {
+//            cout << "Failed to create the output file." << std::endl;
+//            return ;
+//        }
+//
+//
+//        while (getline(inputFile2, line)) {
+//            if (line.length() > 30) {
+//                string firstPart = line.substr(0, 29);
+//                string secondPart = line.substr(29);
+//                outputFile2 << firstPart << endl << secondPart << endl;
+//            } else {
+//                if (line.length() == 1)
+//                    outputFile2 << line << " " << endl;
+//                else {
+//                    outputFile2 << line << endl;
+//                }
+//            }
+//        }
+//
+//
+//        inputFile2.close();
+//        outputFile2.close();
+//
+//        ifstream inputFile3("data3.txt");
+//
+//        if (!inputFile3) {
+//            cout << "Failed to open the file." << endl;
+//            return ;
+//        }
+//
+//        ofstream outputFile3("d3.txt");
+//
+//        if (!outputFile3) {
+//            cerr << "Failed to create the output file." << endl;
+//            return ;
+//        }
+//
+//
+//        while (getline(inputFile3, line)) {
+//            if (line.length() > 30) {
+//                string firstPart = line.substr(0, 29);
+//                string secondPart = line.substr(29);
+//                outputFile3 << firstPart << "-" << endl << secondPart << " " << endl;
+//            } else {
+//                if (line.length() == 1)
+//                    outputFile3 << line << " " << endl;
+//                else {
+//                    outputFile3 << line << endl;
+//                }
+//            }
+//        }
+////  outputFile3<<space<<endl;
+////     outputFile3<<space<<endl;
+//        inputFile3.close();
+//        outputFile3.close();
+//
+//        ifstream inputFile4("data4.txt");
+//
+//        if (!inputFile4) {
+//            cerr << "Failed to open the file." << endl;
+//            return ;
+//        }
+//
+//        ofstream outputFile4("d4.txt");
+//
+//        if (!outputFile4) {
+//            cerr << "Failed to create the output file." << endl;
+//            return ;
+//        }
+//
+//
+//        while (getline(inputFile4, line)) {
+//            if (line.length() > 30) {
+//                string firstPart = line.substr(0, 29);
+//                string secondPart = line.substr(29);
+//                outputFile4 << firstPart << '-' << endl << secondPart << " " << endl;
+//            } else {
+//                if (line.length() == 1)
+//                    outputFile4 << line << " " << endl;
+//                else {
+//                    outputFile4 << line << endl;
+//                }
+//            }
+//        }
+////  outputFile4<<space<<endl;
+////     outputFile4<<space<<endl;
+//        inputFile4.close();
+//        outputFile4.close();
+//
+//        return ;
+//    }
     void table::finalFileChangerForOutputTable()
     {
         ifstream file1("d1.txt");
@@ -230,41 +394,60 @@ namespace core
         if (!file1.is_open())
         {
             cout << "Unable to open d1.txt" << endl;
-            return;
+            return ;
         }
 
         if (!file2.is_open())
         {
             cout << "Unable to open d2.txt" << endl;
-            return;
+            return ;
         }
 
         if (!outputFile.is_open())
         {
             cout << "Unable to open d5.txt" << endl;
-            return;
+            return ;
         }
 
         string line1, line2;
-        while (getline(file1, line1) && getline(file2, line2))
+        if(c1<max1) {
+            while (getline(file1, line1) && getline(file2, line2)) {
+
+                string concat = "";
+
+
+                for (int i = 0; i < line1.length(); i++) {
+                    concat += line1[i];
+                }
+                concat += " ~";
+
+                for (int i = 0; i < line2.length(); i++) {
+                    concat += line2[i];
+                }
+                concat += " ~";
+                outputFile << concat << endl;
+
+            }
+        }
+        else
         {
+            while (getline(file2, line2) && getline(file1, line1)) {
 
-            string concat = "";
+                string concat = "";
 
 
-            for (int i = 0; i < line1.length() ; i++)
-            {
-                concat += line1[i];
+                for (int i = 0; i < line1.length(); i++) {
+                    concat += line1[i];
+                }
+                concat += " ~";
+
+                for (int i = 0; i < line2.length(); i++) {
+                    concat += line2[i];
+                }
+                concat += " ~";
+                outputFile << concat << endl;
+
             }
-            concat += " ~";
-
-            for (int i = 0; i < line2.length() ; i++)
-            {
-                concat += line2[i];
-            }
-            concat += " ~";
-            outputFile << concat << endl;
-
         }
 
         while (getline(file1, line1))
@@ -286,6 +469,8 @@ namespace core
             outputFile << concat << endl;
 
         }
+
+
 
         while (getline(file2, line2))
         {
@@ -315,38 +500,55 @@ namespace core
         if (!file3.is_open())
         {
             cout << "Unable to open d3.txt" << endl;
-
+            return ;
         }
 
         if (!file4.is_open())
         {
             cout << "Unable to open d4.txt" << endl;
-
+            return ;
         }
 
         if (!outputFile2.is_open())
         {
             cout << "Unable to open d6.txt" << endl;
-
+            return ;
         }
 
         string line3, line4;
-
-        while (getline(file3, line3) && getline(file4, line4))
-        {
-            string concat = "";
-            for (int i = 0; i < line3.length(); i++)
-            {
-                concat += line3[i];
+        if(c3<max2) {
+            while (getline(file3, line3) && getline(file4, line4)) {
+                string concat = "";
+                for (int i = 0; i < line3.length(); i++) {
+                    concat += line3[i];
+                }
+                concat += '~';
+                for (int i = 0; i < line4.length(); i++) {
+                    concat += line4[i];
+                }
+                concat += '~';
+                outputFile2 << concat << endl;
             }
-            concat += '~';
-            for (int i = 0; i < line4.length(); i++)
-            {
-                concat += line4[i];
-            }
-            concat += '~';
-            outputFile2 << concat << endl;
         }
+        else
+        {
+            while (getline(file4, line4) && getline(file3, line3)) {
+                string concat = "";
+                for (int i = 0; i < line3.length(); i++) {
+                    concat += line3[i];
+                }
+                concat += '~';
+                for (int i = 0; i < line4.length(); i++) {
+                    concat += line4[i];
+                }
+                concat += '~';
+                outputFile2 << concat << endl;
+            }
+        }
+//        file3.clear();
+//        file3.seekg(0);
+//        file4.clear();
+//        file4.seekg(0);
         while (getline(file3, line3))
         {
             int length1 = line3.length();
@@ -457,16 +659,16 @@ namespace core
 
 
 
-//        remove("data1.txt");
-//        remove("data2.txt");
-//        remove("data3.txt");
-//        remove("data4.txt");
-//        remove("d1.txt");
-//        remove("d2.txt");
-//        remove("d3.txt");
-//        remove("d4.txt");
-//        remove("d5.txt");
-//        remove("d6.txt");
+        remove("data1.txt");
+        remove("data2.txt");
+        remove("data3.txt");
+        remove("data4.txt");
+        remove("d1.txt");
+        remove("d2.txt");
+        remove("d3.txt");
+        remove("d4.txt");
+        remove("d5.txt");
+        remove("d6.txt");
 
 
 
@@ -478,8 +680,10 @@ namespace core
     {
         modifyFilesForTable();
         FilesForTable();
+//        fileChangerForOutputTable();
         finalFileChangerForOutputTable();
         outputTable();
+
 
         return;
     }
