@@ -6,13 +6,18 @@
 #define SYMPLE_TASKER_INPUTHANDLER_H
 #include "PathManager.h"
 #include "Task.h"
+#include<cstdio>
+
 namespace core {
 
     class inputhandler :virtual public PathManager,virtual public Task
     {
     private:
-
-
+        string filename;
+    public:
+        inputhandler();
+        void deleteTask();
+        void editTask();
     };
 
 } // core
