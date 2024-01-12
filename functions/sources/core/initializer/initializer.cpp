@@ -284,7 +284,7 @@ namespace core {
             myaes.encryptfile(mytempfile,getencryptedtaskfile(),password);
             remove(mytempfile.c_str());
             myaes.decryptfile(getencryptedtaskfile(),gettaskfile(),password);
-            cout << "done" << endl;
+            //cout << "done" << endl;
 
         }
     void initializer::passwordanalyzer(string _password)

@@ -34,7 +34,7 @@ namespace core{
     void outputtask::showExpired() { ///Done
         tasktraverser::findExpired();
         for (int i = 0; i < _taskName.size(); ++i) {
-            cout << "Task ID " << _taskID[i] << endl;
+            cout << "Task ID: " << _taskID[i] << endl;
             cout << "Task Name: " << _taskName[i] << endl;
             cout << "Task Detail: " << _taskDetail[i] << endl;
             cout << "Task Tag: " << _taskTag[i] << endl;
@@ -46,7 +46,7 @@ namespace core{
     void outputtask::showUrgent() { ///Done
         tasktraverser::findUrgent();
         for (int i = 0; i < _taskName.size(); ++i) {
-            cout << "Task ID " << _taskID[i] << endl;
+            cout << "Task ID: " << _taskID[i] << endl;
             cout << "Task Name: " << _taskName[i] << endl;
             cout << "Task Detail: " << _taskDetail[i] << endl;
             cout << "Task Tag: " << _taskTag[i] << endl;
@@ -58,7 +58,7 @@ namespace core{
     void outputtask::showImportant() { ///Done
         tasktraverser::findImportant();
         for (int i = 0; i < _taskName.size(); i++) {
-            cout << "Task ID " << _taskID[i] << endl;
+            cout << "Task ID: " << _taskID[i] << endl;
             cout << "Task Name: " << _taskName[i] << endl;
             cout << "Task Detail: " << _taskDetail[i] << endl;
             cout << "Task Tag: " << _taskTag[i] << endl;
@@ -70,7 +70,7 @@ namespace core{
     void outputtask::shownotUrgent() { ///Done
         tasktraverser::findNotUrgent();
         for (int i = 0; i < _taskName.size(); ++i) {
-            cout << "Task ID " << _taskID[i] << endl;
+            cout << "Task ID: " << _taskID[i] << endl;
             cout << "Task Name: " << _taskName[i] << endl;
             cout << "Task Detail: " << _taskDetail[i] << endl;
             cout << "Task Tag: " << _taskTag[i] << endl;
@@ -82,7 +82,7 @@ namespace core{
     void outputtask::shownotImportant() { ///Done
         tasktraverser::findNotImportant();
         for (int i = 0; i < _taskName.size(); ++i) {
-            cout << "Task ID " << _taskID[i] << endl;
+            cout << "Task ID: " << _taskID[i] << endl;
             cout << "Task Name: " << _taskName[i] << endl;
             cout << "Task Detail: " << _taskDetail[i] << endl;
             cout << "Task Tag: " << _taskTag[i] << endl;
@@ -94,7 +94,7 @@ namespace core{
     void outputtask::showUrgentImportant() {
         tasktraverser::UrgentImportant();
         for (int i = 0; i < _taskName.size(); ++i) {
-            cout << "Task ID " << _taskID[i] << endl;
+            cout << "Task ID: " << _taskID[i] << endl;
             cout << "Task Name: " << _taskName[i] << endl;
             cout << "Task Detail: " << _taskDetail[i] << endl;
             cout << "Task Tag: " << _taskTag[i] << endl;
@@ -106,7 +106,7 @@ namespace core{
     void outputtask::showUrgentnotImportant() {
         tasktraverser::urgentNotImportant();
         for (int i = 0; i < _taskName.size(); ++i) {
-            cout << "Task ID " << _taskID[i] << endl;
+            cout << "Task ID: " << _taskID[i] << endl;
             cout << "Task Name: " << _taskName[i] << endl;
             cout << "Task Detail: " << _taskDetail[i] << endl;
             cout << "Task Tag: " << _taskTag[i] << endl;
@@ -118,7 +118,7 @@ namespace core{
     void outputtask::shownotUrgentImportant() {
         tasktraverser::notUrgentImportant();
         for (int i = 0; i < _taskName.size(); ++i) {
-            cout << "Task ID " << _taskID[i] << endl;
+            cout << "Task ID: " << _taskID[i] << endl;
             cout << "Task Name: " << _taskName[i] << endl;
             cout << "Task Detail: " << _taskDetail[i] << endl;
             cout << "Task Tag: " << _taskTag[i] << endl;
@@ -130,7 +130,7 @@ namespace core{
     void outputtask::shownotUrgentnotImportant() {
         tasktraverser::notUrgentnotImportant();
         for (int i = 0; i < _taskName.size(); ++i) {
-            cout << "Task ID " << _taskID[i] << endl;
+            cout << "Task ID: " << _taskID[i] << endl;
             cout << "Task Name: " << _taskName[i] << endl;
             cout << "Task Detail: " << _taskDetail[i] << endl;
             cout << "Task Tag: " << _taskTag[i] << endl;

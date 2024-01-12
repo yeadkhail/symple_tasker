@@ -3,6 +3,9 @@
 //
 
 #include "../../../../headers/Task.h"
+#include <iostream>
+#include <sstream>
+#include <ctime>
 using namespace std;
 
 const int MAX_VALID_YR = 9999;
@@ -74,6 +77,30 @@ namespace core
         getline(issdate, part, '/');
         int intyear = stoi(part);
         return intyear;
+    }
+    bool Task::isValidDateFormat(const std::string& inputString) {
+        std::tm timeStruct = {};
+        std::istringstream dateStream(inputString);
+        char delimiter;
+
+        // Attempt to parse the date components
+        if (dateStream >> timeStruct.tm_mday >> delimiter
+                       >> timeStruct.tm_mon >> delimiter
+                       >> timeStruct.tm_year) {
+
+            // Adjust the month (tm_mon is 0-based)
+            timeStruct.tm_mon -= 1;
+
+            // Adjust the year (tm_year is years since 1900)
+            timeStruct.tm_year -= 1900;
+
+            // Check if the parsed values represent a valid date
+            if (mktime(&timeStruct) != -1) {
+                return true;
+            }
+        }
+
+        return false;
     }
     bool Task::dateinputchecker(const std::string dateStr){
         int day = getdatedate();
@@ -323,5 +350,17 @@ namespace core
     bool Task::isimportant()
     {
        return taghandler::isimportant(tasktag);
+    }
+    string Task::packtaskforinputhandler()
+    {
+
+        string packedtask = "";
+        packedtask+= taskid;
+        packedtask += taskname + "^";
+        packedtask += taskdetail + "^";
+        packedtask += tasktag + "^";
+        packedtask += date + "^";
+        packedtask += attachment + "^";
+        return packedtask;
     }
 } // core
