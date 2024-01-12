@@ -177,5 +177,20 @@ namespace core {
             }
         }
     }
+    void Visuals::showporfile() {
+        using namespace std;
+        core::PathManager path;
+        ifstream profile;
+        profile.open(path.getprofilefile());
+        if (!profile.is_open()) {
+            cerr << "Error while opening file" << endl;
+            return;
+        }
+        string line;
+        while (getline(profile, line)) {
+            cout << line << endl;
+        }
+        return;
+    }
 
 } // core

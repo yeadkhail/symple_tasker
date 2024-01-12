@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
                 maininitializer.enterpassword();
                 maininitializer.decrypttaskfile();
                 core::table mytable1;
-                mytable1.showTable();
+                //mytable1.showTable();
                 start:
                 //cin.ignore();
                 string input;
@@ -41,15 +41,16 @@ int main(int argc, char *argv[]) {
             else if(input == "insert-tag"){core::taghandler mytaghandler; mytaghandler.inputtag();}
             else if(input == "show-attachment") {core::attachment myattachment; myattachment.showattachment();}
             else if(input == "history") {core::outputtask myoutput; myoutput.printHistory();}
-            else if(input == "showexpired") {core::outputtask myoutput; myoutput.showExpired();}
-            else if(input == "showurgent"){core::outputtask myoutput; myoutput.showUrgent();}
-            else if(input == "showimportant"){core::outputtask myoutput; myoutput.showImportant();}
-            else if(input == "shownoturgent"){core::outputtask myoutput; myoutput.shownotUrgent();}
-            else if(input == "shownotimportant"){core::outputtask myoutput; myoutput.shownotImportant();}
-            else if(input == "showurgentimportant"){core::outputtask myoutput; myoutput.showUrgentImportant();}
-            else if(input == "showurgentnotimportant"){core::outputtask myoutput; myoutput.showUrgentnotImportant();}
-            else if(input == "shownoturgentimportant"){core::outputtask myoutput; myoutput.shownotUrgentImportant();}
-            else if(input == "shownoturgentnotimportant"){core::outputtask myoutput; myoutput.shownotUrgentnotImportant();}
+            else if(input == "show-profile"){core::Visuals::showporfile();}
+            else if(input == "show-expired") {core::outputtask myoutput; myoutput.showExpired();}
+            else if(input == "show-urgent"){core::outputtask myoutput; myoutput.showUrgent();}
+            else if(input == "show-important"){core::outputtask myoutput; myoutput.showImportant();}
+            else if(input == "show-noturgent"){core::outputtask myoutput; myoutput.shownotUrgent();}
+            else if(input == "show-notimportant"){core::outputtask myoutput; myoutput.shownotImportant();}
+            else if(input == "show-urgent-important"){core::outputtask myoutput; myoutput.showUrgentImportant();}
+            else if(input == "show-urgent-notimportant"){core::outputtask myoutput; myoutput.showUrgentnotImportant();}
+            else if(input == "show-noturgent-important"){core::outputtask myoutput; myoutput.shownotUrgentImportant();}
+            else if(input == "show-noturgent-notimportant"){core::outputtask myoutput; myoutput.shownotUrgentnotImportant();}
             else if(input == "edit-task") { core::inputhandler myoutput; myoutput.editTask();}
             else if(input == "delete-task") { core::inputhandler myoutput; myoutput.deleteTask();}
             else if (input == "help") core::Visuals::showhelp();
@@ -69,7 +70,7 @@ int main(int argc, char *argv[]) {
             string input = argv[1];
             if(input == "--help") core::Visuals::showhelp();
             else if(input == "--version") core::Visuals::showversion();
-//            else if(input == "--randomizer") core::Visuals::randomizer();
+            else if(input == "--randomizer") core::Visuals::randomiser();
             else if(input == "--clear") system("clear");
             else if(input == "--cleanup") { core::initializer maininitializer; maininitializer.cleanup();}
             else cout << "Invalid command" << endl;
